@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MyServiceService } from '../my-service.service';
 import { Response } from '@angular/http';
 
 
@@ -22,14 +21,4 @@ export class FullLayoutComponent {
     $event.stopPropagation();
     this.status.isopen = !this.status.isopen;
   }
-  constructor(private myService:MyServiceService) {
-
-  }
-  public onSubmit(name: string) {
-    this.myService.sendData({ name: name})
-      .subscribe(
-        data => console.log(data)
-      );
-  }
- 
 }

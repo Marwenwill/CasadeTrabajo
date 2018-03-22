@@ -1,8 +1,8 @@
-from .api import ListViewSet, CardViewSet
+from .api import CandidatViewSet, RecruteurViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter();
-router.register(r'lists', ListViewSet)
-router.register(r'cards', CardViewSet)
+router.register(r'Candidats', CandidatViewSet)
+router.register(r'Recruteurs', RecruteurViewSet)
 
 urlpatterns = router.urls

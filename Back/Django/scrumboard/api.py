@@ -1,12 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
 
-from .serializers import ListSerializer, CardSerializer
-from .models import List, Card
+from .serializers import CandidatSerializer, RecruteurSerializer
+from .models import Candidat, Recruteur
 
-class ListViewSet(ModelViewSet):
-	queryset = List.objects.all()
-	serializer_class = ListSerializer
+class CandidatViewSet(ModelViewSet):
+	queryset = Candidat.objects.all()
+	serializer_class = CandidatSerializer
 
-class CardViewSet(ModelViewSet):
-	queryset = Card.objects.all()
-	serializer_class = CardSerializer	
+class RecruteurViewSet(ModelViewSet):
+	queryset = Recruteur.objects.all()
+	serializer_class = RecruteurSerializer	

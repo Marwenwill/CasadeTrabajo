@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import List, Card
+from .models import Candidat, Recruteur
 
-admin.site.register(List)
-admin.site.register(Card)
+admin.site.register(Candidat)
+admin.site.register(Recruteur)

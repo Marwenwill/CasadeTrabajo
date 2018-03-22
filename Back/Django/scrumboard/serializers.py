@@ -1,16 +1,16 @@
 from rest_framework import serializers
 
 
-from .models import List, Card
+from .models import Candidat, Recruteur
 
-class ListSerializer(serializers.ModelSerializer):
+class CandidatSerializer(serializers.ModelSerializer):
 
 	class Meta:
-		model = List
+		model = Candidat
 		fields = '__all__'
 
-class CardSerializer(serializers.ModelSerializer):
+class RecruteurSerializer(serializers.ModelSerializer):
 
 	class Meta:
-		model = Card
+		model = Recruteur
 		fields = '__all__'		

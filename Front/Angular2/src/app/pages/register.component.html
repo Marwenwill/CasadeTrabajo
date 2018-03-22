@@ -8,25 +8,86 @@
             <p class="text-muted">Create your account</p>
             <div class="input-group mb-1">
               <span class="input-group-addon"><i class="icon-user"></i></span>
-              <input type="text" class="form-control" placeholder="Username">
+              <input type="text" class="form-control" placeholder="Name" name="name" #name>
             </div>
 
             <div class="input-group mb-1">
-              <span class="input-group-addon">@</span>
-              <input type="text" class="form-control" placeholder="Email">
+              <span class="input-group-addon"><i class="icon-user"></i></span>
+              <input type="text" class="form-control" placeholder="Last name" name="lastName" #lastName>
             </div>
+            
+            <div class="input-group mb-1">
+              <span class="input-group-addon">@</span>
+              <input type="text" class="form-control" placeholder="Email" name="email" #email>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-addon"><i class="icon-phone"></i></span>
+              <input type="text" class="form-control" placeholder="Tel" name="tel" #tel>
+            </div>
+
+            
 
             <div class="input-group mb-1">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="password" class="form-control" placeholder="Password" name="password" #password>
             </div>
 
             <div class="input-group mb-2">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
-              <input type="password" class="form-control" placeholder="Repeat password">
+              <input type="password" class="form-control" placeholder="Repeat password" name="confirmation">
+            </div>
+            
+            <div class="input-group mb-2">
+              <span class="input-group-addon"><i class="fa fa-calendar fa-lg mt-2"></i></span>
+              <input type="date" class="form-control" placeholder="Date" name="birthDate" #birthDate>
             </div>
 
-            <button type="button" class="btn btn-block btn-success">Create Account</button>
+            <div class="input-group mb-1">
+              <span class="input-group-addon"><i class="fa fa-home fa-lg mt-2"></i></span>
+              <select id="select" name="gouvernorate" class="form-control" size="1" #gouvernorate>
+                <option value="0">Governorate</option>
+                <option value="1">Ariana</option>
+                <option value="2">Béja</option>
+                <option value="3">Ben Arous</option>
+                <option value="4">Bizerte</option>
+                <option value="5">Gabès</option>
+                <option value="6">Gafsa</option>
+                <option value="7">Jendouba</option>
+                <option value="8">Kairouan</option>
+                <option value="9">Kasserine</option>
+                <option value="10">Kébili</option>
+                <option value="11">Le Kef</option>
+                <option value="12">Mahdia</option>
+                <option value="13">La Manouba</option>
+                <option value="14">Médenine</option>
+                <option value="15">Monastir</option>
+                <option value="16">Nabeul</option>
+                <option value="17">Sfax</option>
+                <option value="18">Sidi Bouzid</option>
+                <option value="19">Siliana</option>
+                <option value="20">Sousse</option>
+                <option value="21">Tataouine</option>
+                <option value="22">Tozeur</option>
+                <option value="23">Tunis</option>
+                <option value="24">Zaghouan</option>
+              </select>
+            </div>
+            
+
+            <div class="form-group row">
+              <div class="col-md-9">
+                <label class="radio-inline" for="inline-radio1">
+                  <i class="fa fa-mars fa-sm mt-2"></i>&nbsp;&nbsp;<input type="radio" name="civility" value="mars" #civility> 
+                </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label class="radio-inline" for="inline-radio2">
+                  <i class="fa fa-venus fa-sm mt-2"></i>&nbsp;&nbsp;<input type="radio" name="civility" value="venus" #civility>
+                </label>
+                
+              </div>
+            </div>
+
+            <button type="submit" (click)="onSubmit(name.value, lastName.value, email.value, tel.value, password.value, civility.value, birthDate.value, gouvernorate.value)" class="btn btn-block btn-success">Create Account</button>
           </div>
           <div class="card-footer p-2">
             <div class="row">

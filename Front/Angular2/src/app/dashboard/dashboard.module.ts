@@ -4,12 +4,14 @@ import { DropdownModule } from 'ng2-bootstrap/dropdown';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { TabsModule } from 'ng2-bootstrap/tabs';
 
 @NgModule({
   imports: [
     DashboardRoutingModule,
     ChartsModule,
-    DropdownModule
+    DropdownModule,
+    TabsModule
   ],
   declarations: [ DashboardComponent ]
 })

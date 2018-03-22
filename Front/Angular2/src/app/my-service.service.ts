@@ -20,7 +20,7 @@ export class MyServiceService {
       const body = JSON.stringify(user);
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      return this.http.post(this.url+"/lists/", body, {
+      return this.http.post(this.url+"/Candidats/", body, {
         headers: headers
       })
         .map((data: Response) => data.json())
