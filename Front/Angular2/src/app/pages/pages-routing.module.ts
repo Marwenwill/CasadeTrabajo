@@ -39,7 +39,8 @@ const routes: Routes = [
         component: RegisterComponent,
         data: {
           title: 'Register Page'
-        }
+        },
+        
       }
     ]
   }

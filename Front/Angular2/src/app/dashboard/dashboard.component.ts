@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
+import { MyServiceService } from '../my-service.service';
+
 @Component({
   templateUrl: 'dashboard.component.html'
 })
@@ -459,7 +462,10 @@ export class DashboardComponent implements OnInit {
   public sparklineChartLegend: boolean = false;
   public sparklineChartType: string = 'line';
 
+  items: any[] = [];
+  constructor(private myService:MyServiceService) {
 
+  }
   ngOnInit(): void {
     // generate random values for mainChart
     for (let i = 0; i <= this.mainChartElements; i++) {
@@ -467,5 +473,15 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
+    this.myService.getAll()
+      .subscribe(
+        data => {
+          const myArray = [];
+          for (let key in data) {
+              myArray.push(data[key]);
+          }
+          this.items = myArray;
+        }
+      );
   }
 }

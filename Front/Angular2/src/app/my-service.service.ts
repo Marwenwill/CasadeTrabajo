@@ -12,8 +12,8 @@ export class MyServiceService {
 
     public getAll(): any {
         
-        return this.http.get(this.url+"/lists")
-          .map((response: Response) => response.json());
+        return this.http.get(this.url+"/Recruteurs/")
+          .map((data: Response) => data.json());
     }
 
     public sendData(user: any){

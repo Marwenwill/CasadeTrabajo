@@ -9,6 +9,7 @@ import { SocialButtonsComponent } from './social-buttons.component';
 import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
+import { EntrepriseComponent } from './entreprise.component';
 
 const routes: Routes = [
   {
@@ -67,8 +68,8 @@ const routes: Routes = [
         }
       },
       {
-        path: 'tabs',
-        component: TabsComponent,
+        path: 'entreprise',
+        component: EntrepriseComponent,
         data: {
           title: 'Tabs'
         }

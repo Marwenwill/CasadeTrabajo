@@ -25,7 +25,7 @@ class Recruteur(models.Model):
 	entrepriseName = models.CharField(max_length=50)
 	webSite = models.CharField(max_length=50)
 	emplacement = models.CharField(max_length=50)
-	logo = models.FileField(upload_to='uploads/')
+	logo = models.CharField(max_length=100)
 	description = models.CharField(max_length=50)
 	secteur = models.CharField(max_length=50)
 	nbEmployee = models.IntegerField(null=True, blank=True)

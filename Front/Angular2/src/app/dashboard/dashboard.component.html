@@ -3,67 +3,20 @@
 <div class="animated fadeIn">
   
     <div class="row">
-       
-        <div class="col-sm-3">
-            <div style="border-top-color: #5bc0de; border-top-width: 3px " class="card">
+        <div *ngFor="let item of items | slice:0:3;  let i=index" class="col-sm-3">
+            <div  style="border-top-color: #5bc0de; border-top-width: 3px " class="card">
               
               <div class="card-block">
                 <form action="" method="post">
                   <div class="form-group">
-                    <h4>Ardia</h4>  
+                    <h4>{{item.entrepriseName}}</h4>  
                   </div>
                   <div class="form-group">
                     <button type="button" class="btn btn-info btn-sm">22 offres</button>
                   </div>
                   <div style="height: 100px">
                   <div class="form-group">
-                      <img src="assets/img/avatars/ardia.png" alt="USA" style="height:24px;" src="assets/img/avatars/ardia.png">
-                  </div>
-                </div>
-                  <div class="form-group form-actions">
-                    <button type="button" class="btn btn-outline-primary btn-lg btn-block">Voir les offres</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-              <div style="border-top-color: #5bc0de; border-top-width: 3px " class="card">
-              
-              <div class="card-block">
-                <form action="" method="post">
-                  <div class="form-group">
-                    <h4>Talan</h4>  
-                  </div>
-                  <div class="form-group">
-                    <button type="button" class="btn btn-info btn-sm">14 offres</button>
-                  </div>
-                  <div style="height: 100px">
-                  <div class="form-group">
-                      <img src="assets/img/avatars/talan.png" alt="USA" style="height:24px;" src="assets/img/avatars/talan.png">
-                  </div>
-                </div>
-                  <div class="form-group form-actions">
-                    <button type="button" class="btn btn-outline-primary btn-lg btn-block">Voir les offres</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-              <div style="border-top-color: #5bc0de; border-top-width: 3px " class="card">
-              
-              <div class="card-block">
-                <form action="" method="post">
-                  <div class="form-group">
-                    <h4>Orange</h4>  
-                  </div>
-                  <div class="form-group">
-                    <button type="button" class="btn btn-info btn-sm">22 offres</button>
-                  </div>
-                  <div style="height: 100px">
-                  <div class="form-group">
-                      <img src="assets/img/avatars/orange.jpg" alt="USA" style="height:80px;" src="assets/img/avatars/orange.jpg">
+                      <img src="{{item.logo}}" alt="USA" style="height:40px;" src="{{item.logo}}">
                   </div>
                 </div>
                   <div class="form-group form-actions">
@@ -75,7 +28,7 @@
           </div>
               <div class="col-sm-3">
                   <div style="line-height: 80px;">
-                    <button type="button" style=" text-align: center; height: 295px; font-family: 'IBM Plex Mono', monospace;color: white; border: transparent; background-color: #5bc0de" class="btn btn-outline-primary btn-lg btn-block"><span style="font-size: 13px"> Tous les</span><br>Entreprises<br><i class="fa fa-arrow-right fa-lg mt-2"></i></button>
+                    <button routerLinkActive="active" [routerLink]="['/components/entreprise']" type="button" style=" text-align: center; height: 295px; font-family: 'IBM Plex Mono', monospace;color: white; border: transparent; background-color: #5bc0de" class="btn btn-outline-primary btn-lg btn-block"><span style="font-size: 13px"> Tous les</span><br>Entreprises<br><i class="fa fa-arrow-right fa-lg mt-2"></i></button>
                   </div>   
                 </div>
         
@@ -175,21 +128,22 @@
       <!-- Nav tabs -->
       <tabset>
         <tab>
-          <template tabHeading><i class="icon-list"></i> Menu &nbsp;<span class="badge badge-success">New</span></template>
+          <template tabHeading>Emploi par catégorie &nbsp;<span class="badge badge-pill badge-info">35</span></template>
           1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </tab>
         <tab>
-          <template tabHeading><i class="icon-calculator"></i> Calculator &nbsp;<span class="badge badge-pill badge-danger">29</span></template>
+          <template tabHeading> Emploi par ville &nbsp;<span class="badge badge-pill badge-info">29</span></template>
           2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </tab>
         <tab>
-          <template tabHeading><i class="icon-pie-chart"></i> Charts</template>
+          <template tabHeading> Emploi par Région<span class="badge badge-pill badge-info">13</span></template>
           4. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </tab>
       </tabset>
     </div><!--/.col-->
-  </div><!--/.row-->
+  </div><!--/.row-->  
 </div>
+
 
 
 

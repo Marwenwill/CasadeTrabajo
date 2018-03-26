@@ -6,6 +6,7 @@ import { FormsComponent } from './forms.component';
 import { SocialButtonsComponent } from './social-buttons.component';
 import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
+import { EntrepriseComponent } from './entreprise.component';
 
 // Modal Component
 import { ModalModule } from 'ng2-bootstrap/modal';
@@ -14,15 +15,18 @@ import { ModalsComponent } from './modals.component';
 // Tabs Component
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { TabsComponent } from './tabs.component';
+import { CommonModule } from '@angular/common'
 
 // Components Routing
 import { ComponentsRoutingModule } from './components-routing.module';
+
 
 @NgModule({
   imports: [
     ComponentsRoutingModule,
     ModalModule.forRoot(),
-    TabsModule
+    TabsModule,
+    CommonModule
   ],
   declarations: [
     ButtonsComponent,
@@ -32,7 +36,8 @@ import { ComponentsRoutingModule } from './components-routing.module';
     SocialButtonsComponent,
     SwitchesComponent,
     TablesComponent,
-    TabsComponent
+    TabsComponent,
+    EntrepriseComponent
   ]
 })
 export class ComponentsModule { }
