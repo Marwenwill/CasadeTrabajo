@@ -33,3 +33,15 @@ class Recruteur(models.Model):
 		return "Recruteur: {}".format(self.name)
 
 
+@python_2_unicode_compatible
+class Offre(models.Model):			
+	titre = models.CharField(max_length=100)
+	dateAjout = models.DateField(auto_now=False, auto_now_add=False)
+	nature = models.CharField(max_length=50)
+	duree = models.CharField(max_length=50)
+	niveau = models.CharField(max_length=50)
+	description = models.CharField(max_length=50)
+	salaire = models.FloatField(null=True, blank=True)
+	idRecruteur = models.ForeignKey(Recruteur, related_name="Offre", on_delete=models.CASCADE)
+	def __str__(self):
+		return "Offre: {}".format(self.title)
