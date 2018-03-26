@@ -10,6 +10,7 @@ import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
 import { EntrepriseComponent } from './entreprise.component';
+import { OffresComponent } from './offres.component';
 
 const routes: Routes = [
   {
@@ -54,10 +55,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'switches',
-        component: SwitchesComponent,
+        path: 'offre',
+        component: OffresComponent,
         data: {
-          title: 'Switches'
+          title: 'Offre'
         }
       },
       {
@@ -71,7 +72,7 @@ const routes: Routes = [
         path: 'entreprise',
         component: EntrepriseComponent,
         data: {
-          title: 'Tabs'
+          title: 'Entreprise'
         }
       }
     ]
