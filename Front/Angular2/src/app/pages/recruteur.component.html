@@ -1,0 +1,106 @@
+<div class="app flex-row align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card mx-2">
+            <div class="card-block p-2">
+              <h1>Register</h1>
+              <p class="text-muted">Create your account</p>
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-user"></i></span>
+                <input type="text" class="form-control" placeholder="Name" name="name" #name>
+              </div>
+  
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-user"></i></span>
+                <input type="text" class="form-control" placeholder="Last name" name="lastName" #lastName>
+              </div>
+              
+              <div class="input-group mb-1">
+                <span class="input-group-addon">@</span>
+                <input type="text" class="form-control" placeholder="Email" name="email" #email>
+              </div>
+  
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <input type="text" class="form-control" placeholder="Tel" name="tel" #tel>
+              </div>
+  
+              
+  
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-lock"></i></span>
+                <input type="password" class="form-control" placeholder="Password" name="password" #password>
+              </div>
+  
+              <div class="input-group mb-2">
+                <span class="input-group-addon"><i class="icon-lock"></i></span>
+                <input type="password" class="form-control" placeholder="Repeat password" name="confirmation">
+              </div>
+              
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <input type="text" class="form-control" placeholder="Entreprise name" name="entrepriseName" #entrepriseName>
+              </div>
+
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <input type="text" class="form-control" placeholder="WebSite" name="webSite" #webSite>
+              </div>
+
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <input type="text" class="form-control" placeholder="Emplacement" name="emplacement" #emplacement>
+              </div>
+
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <input type="file" class="form-control" placeholder="logo" name="logo" #logo>
+              </div>
+
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <input type="text" class="form-control" placeholder="Description" name="description" #description>
+              </div>
+
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <input type="text" class="form-control" placeholder="Secteur" name="secteur" #secteur>
+              </div>
+
+              <div class="input-group mb-1">
+                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <input type="text" class="form-control" placeholder="Number of Employees" name="nbEmployee" #nbEmployee>
+              </div>
+              
+  
+              <div class="form-group row">
+                <div class="col-md-9">
+                  <label class="radio-inline" for="inline-radio1">
+                    <i class="fa fa-mars fa-sm mt-2"></i>&nbsp;&nbsp;<input type="radio" name="civility" value="mars" #civility> 
+                  </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <label class="radio-inline" for="inline-radio2">
+                    <i class="fa fa-venus fa-sm mt-2"></i>&nbsp;&nbsp;<input type="radio" name="civility" value="venus" #civility>
+                  </label>
+                  
+                </div>
+              </div>
+  
+              <button type="submit" (click)="onSubmit(name.value, lastName.value, email.value, tel.value, password.value, entrepriseName.value, webSite.value, emplacement.value, logo.value, description.value, secteur.value, nbEmployee.value)" class="btn btn-block btn-success">Create Account</button>
+            </div>
+            <div class="card-footer p-2">
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -11,12 +11,21 @@ export class MyServiceService {
 	}
 
     public getAll(): any {
-        
         return this.http.get(this.url+"/Recruteurs/")
           .map((data: Response) => data.json());
     }
 
-    public sendData(user: any){
+    public getAllOffres(): any {
+      return this.http.get(this.url+"/Offres/")
+        .map((data: Response) => data.json());
+  }
+
+    public getEntrepriseById(id: number): any{
+      return this.http.get(this.url+"/Recruteurs/"+id)
+          .map((data: Response) => data.json());
+    }
+    
+    public sendDataCandidat(user: any){
       const body = JSON.stringify(user);
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -25,5 +34,34 @@ export class MyServiceService {
       })
         .map((data: Response) => data.json())
 
+    }
+
+    public getCountById(id: number){
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      return this.http.get(this.url+"/OffresparEntreprise/count/"+ id)
+        .map((data: Response) => data.json())
+
+    }
+
+    public sendDataRecruteur(user: any){
+      const body = JSON.stringify(user);
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      return this.http.post(this.url+"/Recruteurs/", body, {
+        headers: headers
+      })
+        .map((data: Response) => data.json())
+
+    }
+
+    public login(user: any){
+      const body = JSON.stringify(user);
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      return this.http.post("http://127.0.0.1:8000/auth_api/login/", body, {
+        headers: headers
+      })
+        .map((data: Response) => data.json())
     }
 }

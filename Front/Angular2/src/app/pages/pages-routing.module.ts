@@ -5,6 +5,7 @@ import { P404Component } from './404.component';
 import { P500Component } from './500.component';
 import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
+import { RecruteurComponent } from './recruteur.component';
 
 const routes: Routes = [
   {
@@ -21,10 +22,10 @@ const routes: Routes = [
         }
       },
       {
-        path: '500',
-        component: P500Component,
+        path: 'recruteur',
+        component: RecruteurComponent,
         data: {
-          title: 'Page 500'
+          title: 'Recruteur'
         }
       },
       {

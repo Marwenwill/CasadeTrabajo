@@ -1,23 +1,20 @@
 <div class="row">
-    <div class="col-sm-6 col-md-6">
-      <div class="card card-inverse card-primary">
-        <div class="card-header">
-          Card title
-        </div>
+    <div *ngFor="let item of items" class="col-sm-6 col-md-12">
+      <div class="card card-accent-primary">
         <div class="card-block">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+          <div class="row">
+            <div class="col-md-9">
+               {{item.name}} 
+            </div>
+            <div class="col-md-3">
+                <p style="text-align: right;"><i class="fa fa-calendar fa-sm"></i>&nbsp;</p>
+            </div>
+          </div>
+            <hr>
+          <p></p>
         </div>
       </div>
     </div><!--/.col-->
-    <div class="col-sm-6 col-md-6">
-        <div class="card card-inverse card-primary">
-          <div class="card-header">
-            Card title
-          </div>
-          <div class="card-block">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          </div>
-        </div>
-      </div><!--/.col-->
+    
       
 </div>

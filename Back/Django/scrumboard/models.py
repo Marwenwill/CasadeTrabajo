@@ -32,7 +32,6 @@ class Recruteur(models.Model):
 	def __str__(self):
 		return "Recruteur: {}".format(self.name)
 
-
 @python_2_unicode_compatible
 class Offre(models.Model):			
 	titre = models.CharField(max_length=100)
@@ -44,4 +43,6 @@ class Offre(models.Model):
 	salaire = models.FloatField(null=True, blank=True)
 	idRecruteur = models.ForeignKey(Recruteur, related_name="Offre", on_delete=models.CASCADE)
 	def __str__(self):
-		return "Offre: {}".format(self.title)
+		return "Offre: {}".format(self.title)		
+
+

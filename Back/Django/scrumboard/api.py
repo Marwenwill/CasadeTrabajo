@@ -13,4 +13,4 @@ class RecruteurViewSet(ModelViewSet):
 
 class OffreViewSet(ModelViewSet):
 	queryset = Offre.objects.all()
-	serializer_class = OffreSerializer		
+serializer_class = OffreSerializer 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'
 
 import { P404Component } from './404.component';
 import { P500Component } from './500.component';
@@ -7,18 +8,21 @@ import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
 
 import { PagesRoutingModule } from './pages-routing.module';
+import { RecruteurComponent } from './recruteur.component';
 
 @NgModule({
   imports: [ 
     PagesRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   declarations: [
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent    
+    RegisterComponent,
+    RecruteurComponent  
   ]
 })
 export class PagesModule { }
