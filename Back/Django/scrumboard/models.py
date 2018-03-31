@@ -16,7 +16,8 @@ class Candidat(models.Model):
 
 
 @python_2_unicode_compatible
-class Recruteur(models.Model):			
+class Recruteur(models.Model):	
+	recruteur_id = models.AutoField(primary_key=True,verbose_name="Recruteur id") 		
 	name = models.CharField(max_length=50)
 	lastName = models.CharField(max_length=50)
 	email = models.CharField(max_length=50)
@@ -30,18 +31,18 @@ class Recruteur(models.Model):
 	secteur = models.CharField(max_length=50)
 	nbEmployee = models.IntegerField(null=True, blank=True)
 	def __str__(self):
-		return "Recruteur: {}".format(self.name)
+		return "Recruteur: {}".format(self.recruteur_id)
 
 @python_2_unicode_compatible
 class Offre(models.Model):			
-	titre = models.CharField(max_length=100)
+	title = models.CharField(max_length=100, blank=True, default=0)
 	dateAjout = models.DateField(auto_now=False, auto_now_add=False)
 	nature = models.CharField(max_length=50)
 	duree = models.CharField(max_length=50)
 	niveau = models.CharField(max_length=50)
-	description = models.CharField(max_length=50)
+	description = models.CharField(max_length=1000)
 	salaire = models.FloatField(null=True, blank=True)
-	idRecruteur = models.ForeignKey(Recruteur, related_name="Offre", on_delete=models.CASCADE)
+	idRecruteur = models.ForeignKey(Recruteur,verbose_name = "recruteur", on_delete=models.CASCADE)
 	def __str__(self):
 		return "Offre: {}".format(self.title)		
 

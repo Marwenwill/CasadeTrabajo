@@ -4,14 +4,14 @@
         <div class="card-block">
           <div class="row">
             <div class="col-md-9">
-               {{item.name}} 
+               {{item.name}} {{item.title}}
             </div>
             <div class="col-md-3">
-                <p style="text-align: right;"><i class="fa fa-calendar fa-sm"></i>&nbsp;</p>
+                <p style="text-align: right;"><i class="fa fa-calendar fa-sm"></i>&nbsp;{{item.dateAjout}}</p>
             </div>
           </div>
             <hr>
-          <p></p>
+          <p>{{item.description}}</p>
         </div>
       </div>
     </div><!--/.col-->

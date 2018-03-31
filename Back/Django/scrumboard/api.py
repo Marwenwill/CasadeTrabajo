@@ -12,5 +12,6 @@ class RecruteurViewSet(ModelViewSet):
 	serializer_class = RecruteurSerializer	
 
 class OffreViewSet(ModelViewSet):
-	queryset = Offre.objects.all()
-serializer_class = OffreSerializer 
+	recruter_1 = Recruteur.objects.get(recruteur_id=1)
+	queryset = Offre.objects.filter(idRecruteur__recruteur_id=1).select_related('entrepriseName').values()
+	serializer_class = OffreSerializer 
