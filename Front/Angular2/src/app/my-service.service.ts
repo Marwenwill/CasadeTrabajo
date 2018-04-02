@@ -20,8 +20,17 @@ export class MyServiceService {
         .map((data: Response) => data.json());
   }
 
-    public getEntrepriseById(id: number): any{
-      return this.http.get(this.url+"/Recruteurs/"+id)
+  public getAllSecteurs(): any {
+    return this.http.get(this.url+"/Secteurs/")
+      .map((data: Response) => data.json());
+}
+
+public getAllNature(): any {
+  return this.http.get(this.url+"/Nature/")
+    .map((data: Response) => data.json());
+}
+    public getOffreById(id: number): any{
+      return this.http.get(this.url+"/Offres/"+id)
           .map((data: Response) => data.json());
     }
     

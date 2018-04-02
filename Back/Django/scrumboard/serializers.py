@@ -19,4 +19,16 @@ class OffreSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Offre
-		fields = ('idRecruteur',)
+		fields = '__all__'
+
+class SecteurSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Recruteur
+		fields = ('secteur',)	
+
+class NatureSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Offre
+		fields = ('nature',)			

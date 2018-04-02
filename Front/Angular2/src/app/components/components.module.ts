@@ -7,6 +7,7 @@ import { SocialButtonsComponent } from './social-buttons.component';
 import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 import { EntrepriseComponent } from './entreprise.component';
+import { OffresEntrepriseComponent } from './offres-entreprise.component';
 
 // Modal Component
 import { ModalModule } from 'ng2-bootstrap/modal';
@@ -39,7 +40,8 @@ import { OffresComponent } from './offres.component';
     TablesComponent,
     TabsComponent,
     EntrepriseComponent,
-    OffresComponent
+    OffresComponent,
+    OffresEntrepriseComponent 
   ]
 })
 export class ComponentsModule { }

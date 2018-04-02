@@ -22,7 +22,7 @@ import { RecruteurComponent } from './recruteur.component';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    RecruteurComponent  
+    RecruteurComponent 
   ]
 })
 export class PagesModule { }

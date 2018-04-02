@@ -463,9 +463,11 @@ export class DashboardComponent implements OnInit {
   public sparklineChartType: string = 'line';
 
   items: any[] = [];
-  constructor(private myService:MyServiceService) {
+  private offreIndex: number = 1;
+  constructor(private myService:MyServiceService, private router: Router) {
 
   }
+  
   ngOnInit(): void {
     // generate random values for mainChart
     for (let i = 0; i <= this.mainChartElements; i++) {
@@ -483,5 +485,9 @@ export class DashboardComponent implements OnInit {
           this.items = myArray;
         }
       );
+      
   }
+  offreEntreprise(id: number){
+    this.router.navigate(['/components', id])
+    }
 }

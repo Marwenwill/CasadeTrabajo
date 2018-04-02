@@ -15,6 +15,6 @@ import { TabsModule } from 'ng2-bootstrap/tabs';
     TabsModule,
     CommonModule
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [ DashboardComponent]
 })
 export class DashboardModule { }

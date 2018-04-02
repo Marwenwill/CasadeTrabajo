@@ -11,6 +11,7 @@ import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
 import { EntrepriseComponent } from './entreprise.component';
 import { OffresComponent } from './offres.component';
+import { OffresEntrepriseComponent } from './offres-entreprise.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,13 @@ const routes: Routes = [
       {
         path: 'entreprise',
         component: EntrepriseComponent,
+        data: {
+          title: 'Entreprise'
+        }
+      },
+      {
+        path: ':id',
+        component: OffresEntrepriseComponent,
         data: {
           title: 'Entreprise'
         }

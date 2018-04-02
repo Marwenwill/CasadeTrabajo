@@ -20,7 +20,7 @@
                   </div>
                 </div>
                   <div class="form-group form-actions">
-                    <button type="button" class="btn btn-outline-primary btn-lg btn-block">Voir les offres</button>
+                    <button (click)="offreEntreprise(item.recruteur_id)" type="button" class="btn btn-outline-primary btn-lg btn-block">Voir les offres</button>
                   </div>
                 </form>
               </div>
@@ -30,7 +30,7 @@
                   <div style="line-height: 80px;">
                     <button routerLinkActive="active" [routerLink]="['/components/entreprise']" type="button" style=" text-align: center; height: 295px; font-family: 'IBM Plex Mono', monospace;color: white; border: transparent; background-color: #5bc0de" class="btn btn-outline-primary btn-lg btn-block"><span style="font-size: 13px"> Tous les</span><br>Entreprises<br><i class="fa fa-arrow-right fa-lg mt-2"></i></button>
                   </div>   
-                </div>
+              </div>
         
         
       </div><!--/.row-->

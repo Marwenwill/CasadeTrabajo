@@ -1,0 +1,18 @@
+<div *ngIf="check" class="row">
+    <div class="col-sm-6 col-md-12">
+      <div class="card card-accent-primary">
+        <div class="card-block">
+          <div class="row">
+            <div class="col-md-9">
+               {{items.title}}
+            </div>
+            <div class="col-md-3">
+                <p style="text-align: right;"><i class="fa fa-calendar fa-sm"></i>&nbsp;{{items.dateAjout}}</p>
+            </div>
+          </div>
+            <hr>
+          <p>{{items.description}}</p>
+        </div>
+      </div>
+    </div><!--/.col-->
+</div>

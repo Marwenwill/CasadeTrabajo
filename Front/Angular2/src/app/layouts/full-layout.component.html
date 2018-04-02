@@ -83,41 +83,18 @@
         <li class="nav-item nav-dropdown" routerLinkActive="open">
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> 
             par Catégories</a>
-          <ul class="nav-dropdown-items">
+          <ul *ngFor="let item of items" class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/buttons']"><i class="icon-puzzle"></i> Buttons</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/tables']"><i class="icon-puzzle"></i> {{item.secteur}}</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/social-buttons']"><i class="icon-puzzle"></i> Social Buttons</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/cards']"><i class="icon-puzzle"></i> Cards</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/forms']"><i class="icon-puzzle"></i> Forms</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/modals']"><i class="icon-puzzle"></i> Modals</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/switches']"><i class="icon-puzzle"></i> Switches</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/tables']"><i class="icon-puzzle"></i> Tables</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/tabs']"><i class="icon-puzzle"></i> Tabs</a>
-            </li>
+            
           </ul>
         </li>
         <li class="nav-item nav-dropdown" routerLinkActive="open">
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> par Type d'emploi</a>
-          <ul class="nav-dropdown-items">
+          <ul *ngFor="let item of itemsNature" class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/icons/font-awesome']"><i class="icon-star"></i> Font Awesome</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/icons/simple-line-icons']"><i class="icon-star"></i> Simple Line Icons</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/icons/font-awesome']"><i class="icon-star"></i> {{item.nature}}</a>
             </li>
           </ul>
         </li>
@@ -178,12 +155,9 @@
       <img src="assets/img/avatars/6.jpg" alt="admin@bootstrapmaster.com">
       <span class="hidden-md-down">admin</span>
 
-        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <div class="dropdown-header text-center"><strong>Operations</strong></div>
 
-        <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="badge badge-info">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Messages<span class="badge badge-success">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Tasks<span class="badge badge-danger">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comment<span class="badge badge-warning">42</span></a>
+        <a class="dropdown-item" href="#"><i class="fa fa-plus"></i> Ajouter Offre</a>
 
         <div class="dropdown-header text-center"><strong>Settings</strong></div>
 
