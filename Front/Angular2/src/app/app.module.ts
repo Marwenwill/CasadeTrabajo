@@ -20,6 +20,8 @@ import { AppRoutingModule } from './app.routing';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+import { ModalComponent } from './layouts/modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -39,6 +42,7 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
+    ModalComponent,
   ],
   providers: [MyServiceService],
   bootstrap: [ AppComponent ]

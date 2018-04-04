@@ -4,7 +4,7 @@
         <div class="card-block">
           <div class="row">
             <div class="col-md-9">
-               {{item.name}} {{item.title}}
+               {{item.title}}
             </div>
             <div class="col-md-3">
                 <p style="text-align: right;"><i class="fa fa-calendar fa-sm"></i>&nbsp;{{item.dateAjout}}</p>
@@ -12,6 +12,16 @@
           </div>
             <hr>
           <p>{{item.description}}</p>
+          <div class="row">
+              <div class="col-md-8">
+                </div>
+            <div class="col-md-2">
+              <img src="{{item.entrepriseName.logo}}" alt="USA" style="height:20px;" src="{{item.entrepriseName.logo}}">
+          </div>
+        <div class="col-md-2">
+          <i class="icon-location-pin icons"></i>&nbsp;{{item.entrepriseName.emplacement}}
+      </div>
+          </div>
         </div>
       </div>
     </div><!--/.col-->

@@ -17,7 +17,7 @@ class Candidat(models.Model):
 
 @python_2_unicode_compatible
 class Recruteur(models.Model):	
-	recruteur_id = models.AutoField(primary_key=True,verbose_name="Recruteur id") 		
+	recruteur_id = models.AutoField(primary_key=True,verbose_name="Recruteur") 		
 	name = models.CharField(max_length=50)
 	lastName = models.CharField(max_length=50)
 	email = models.CharField(max_length=50)
@@ -42,7 +42,7 @@ class Offre(models.Model):
 	niveau = models.CharField(max_length=50)
 	description = models.CharField(max_length=1000)
 	salaire = models.FloatField(null=True, blank=True)
-	idRecruteur = models.ForeignKey(Recruteur,verbose_name = "recruteur", on_delete=models.CASCADE)
+	idRecruteur = models.ForeignKey(Recruteur,verbose_name = "idRecruteur", on_delete=models.CASCADE, default=None)
 	def __str__(self):
 		return "Offre: {}".format(self.title)		
 

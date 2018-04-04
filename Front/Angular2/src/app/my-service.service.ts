@@ -64,6 +64,18 @@ public getAllNature(): any {
 
     }
 
+
+    public sendDataOffres(user: any){
+      const body = JSON.stringify(user);
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      return this.http.post(this.url+"/Offres/", body, {
+        headers: headers
+      })
+        .map((data: Response) => data.json())
+
+    }
+    
     public login(user: any){
       const body = JSON.stringify(user);
       const headers = new Headers();

@@ -15,11 +15,18 @@ class RecruteurSerializer(serializers.ModelSerializer):
 		model = Recruteur
 		fields = '__all__'		
 
-class OffreSerializer(serializers.ModelSerializer):
+class RecruteurByIdSerializer(serializers.ModelSerializer):
 
 	class Meta:
-		model = Offre
-		fields = '__all__'
+		model = Recruteur
+		fields = ( 'entrepriseName','emplacement', 'logo')
+
+class OffreSerializer(serializers.ModelSerializer):
+    entrepriseName = RecruteurByIdSerializer(source='idRecruteur', read_only=True)
+
+    class Meta:
+        model = Offre
+        fields = ('title', 'dateAjout', 'description', 'entrepriseName')	
 
 class SecteurSerializer(serializers.ModelSerializer):
 
