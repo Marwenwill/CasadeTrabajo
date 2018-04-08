@@ -42,9 +42,9 @@ export class FullLayoutComponent implements OnInit{
   }
 
 
-  public onSubmit(title: string, nature: String, duree: String, niveau: String, description: String, salaire: String) {
+  public onSubmit(title: string, nature: String, duree: String, niveau: String, description: String, salaire: String,  secteur: String) {
     console.log(title, nature, duree, this.dateAjout, this.id, description)
-    this.myService.sendDataOffres({ title: title, dateAjout: this.dateAjout, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, id:1})
+    this.myService.sendDataOffres({ title: title, dateAjout: this.dateAjout, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, secteur:secteur, id:this.id})
       .subscribe(
         data => console.log(data)
       );
@@ -58,6 +58,7 @@ export class FullLayoutComponent implements OnInit{
       niveau: ['', Validators.required],
       description: ['', Validators.required],
       salaire: ['', Validators.required],
+      secteur: ['', Validators.required],
   });
   
     this.myService.getAllSecteurs()

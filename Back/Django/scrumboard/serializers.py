@@ -1,7 +1,14 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 
 
 from .models import Candidat, Recruteur, Offre
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'password')
 
 class CandidatSerializer(serializers.ModelSerializer):
 
@@ -26,12 +33,12 @@ class OffreSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Offre
-        fields = ('title', 'dateAjout', 'description', 'entrepriseName')	
+        fields = ('owner', 'id', 'title', 'dateAjout', 'nature', 'duree', 'niveau', 'description', 'salaire', 'secteur', 'idRecruteur', 'entrepriseName')	
 
 class SecteurSerializer(serializers.ModelSerializer):
 
 	class Meta:
-		model = Recruteur
+		model = Offre
 		fields = ('secteur',)	
 
 class NatureSerializer(serializers.ModelSerializer):

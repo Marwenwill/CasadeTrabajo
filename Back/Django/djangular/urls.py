@@ -15,9 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from rest_framework_jwt.views import obtain_jwt_token
+from scrumboard.views import UserList, UserDetail
+from scrumboard import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^scrumboard/', include('scrumboard.urls'))
+    url(r'^scrumboard/', include('scrumboard.urls')),
+    url(r'^api-token-auth/', obtain_jwt_token),
+    url(r'^users/$', views.UserList.as_view()),
+    url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
 ]
+
+
+"""
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjMxMzg0MTgsInVzZXJuYW1lIjoicm9vdCIsImVtYWlsIjoibWFyd2Vub3BAZ21haWwuY29tIiwidXNlcl9pZCI6MX0.apG6lSddEsC-EjlADt0sCopUtPZqYOFm99QAMYjMgnY
+"""

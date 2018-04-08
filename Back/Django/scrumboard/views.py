@@ -1,7 +1,13 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from .serializers import UserSerializer
+from rest_framework import generics
 
-def index(request, path=''):
-"""
-Renders the Angular2 SPA
-"""
-return render(request, 'index.html')
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

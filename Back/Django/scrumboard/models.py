@@ -28,7 +28,6 @@ class Recruteur(models.Model):
 	emplacement = models.CharField(max_length=50)
 	logo = models.CharField(max_length=100)
 	description = models.CharField(max_length=50)
-	secteur = models.CharField(max_length=50)
 	nbEmployee = models.IntegerField(null=True, blank=True)
 	def __str__(self):
 		return "Recruteur: {}".format(self.recruteur_id)
@@ -40,10 +39,13 @@ class Offre(models.Model):
 	nature = models.CharField(max_length=50)
 	duree = models.CharField(max_length=50)
 	niveau = models.CharField(max_length=50)
-	description = models.CharField(max_length=1000)
+	description = models.CharField(max_length=10000)
 	salaire = models.FloatField(null=True, blank=True)
+	secteur = models.CharField(max_length=50, null=True)
 	idRecruteur = models.ForeignKey(Recruteur,verbose_name = "idRecruteur", on_delete=models.CASCADE, default=None)
+	owner = models.ForeignKey('auth.User', related_name='Offre', on_delete=models.CASCADE, null=False, blank=True)
 	def __str__(self):
 		return "Offre: {}".format(self.title)		
+		
 
 
