@@ -12,7 +12,7 @@ import { TabsComponent } from './tabs.component';
 import { EntrepriseComponent } from './entreprise.component';
 import { OffresComponent } from './offres.component';
 import { OffresEntrepriseComponent } from './offres-entreprise.component';
-
+import { OffresSecteursComponent } from './offres-secteurs.component';
 const routes: Routes = [
   {
     path: '',
@@ -63,24 +63,24 @@ const routes: Routes = [
         }
       },
       {
-        path: 'tables',
-        component: TablesComponent,
+        path: 'entreprise',
+        component: EntrepriseComponent,
         data: {
           title: 'Tables'
         }
       },
       {
-        path: 'entreprise',
-        component: EntrepriseComponent,
+        path: ':secteur',
+        component: OffresSecteursComponent,
         data: {
-          title: 'Entreprise'
+          title: 'Secteurs Entreprise'
         }
       },
       {
-        path: ':id',
+        path: 'offres/:id',
         component: OffresEntrepriseComponent,
         data: {
-          title: 'Entreprise'
+          title: 'Offres Entreprise'
         }
       }
     ]

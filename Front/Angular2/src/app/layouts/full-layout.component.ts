@@ -5,6 +5,7 @@ import { Response } from '@angular/http';
 import { MyServiceService } from '../my-service.service'
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,9 +13,10 @@ import { DatePipe } from '@angular/common';
   templateUrl: './full-layout.component.html'
 })
 export class FullLayoutComponent implements OnInit{
-  
+  isLoggedIn: boolean = false;
   items: any[] = [];
   itemsNature: any[] = [];
+  name: string = "";
   public disabled: boolean = false;
   public status: {isopen: boolean} = {isopen: false};
 
@@ -33,7 +35,7 @@ export class FullLayoutComponent implements OnInit{
   dateAjout:string;
   id: number = 1;
 
-  constructor(private myService: MyServiceService, private fb: FormBuilder) { 
+  constructor(private myService: MyServiceService, private fb: FormBuilder, private router: Router) { 
     this.dateAjout = 'Angular2'
 
     let dp = new DatePipe('de-DE' /* locale .. */);
@@ -50,6 +52,10 @@ export class FullLayoutComponent implements OnInit{
       );
   }
 
+  selectBySecteur(secteur: string){
+    this.router.navigate(['/components', secteur])
+    }
+ 
   ngOnInit(): any{
     this.myForm = this.fb.group({
       title: ['', Validators.required],
@@ -60,7 +66,15 @@ export class FullLayoutComponent implements OnInit{
       salaire: ['', Validators.required],
       secteur: ['', Validators.required],
   });
+ 
+let currUser = JSON.parse(localStorage.getItem('currentUser'));
+ if (currUser != null) {
+    console.log("hello");
+   this.isLoggedIn = true; 
+   this.name = currUser.username;
   
+  }
+
     this.myService.getAllSecteurs()
     .subscribe(
       data => {
@@ -83,5 +97,10 @@ export class FullLayoutComponent implements OnInit{
         this.itemsNature = myArray;
       } 
     );
+  
+}
+  public logout() {
+    this.myService.logout();
+    location.reload();
   }
 }

@@ -19,13 +19,20 @@
     <li class="nav-item hidden-md-down">
       <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
     </li>
-    <li class="nav-item hidden-md-down">
-        <button type="button" routerLinkActive="active" [routerLink]="['/pages/login']" class="btn btn-info btn-sm">Connexion</button>
+
+
+    <li class="nav-item hidden-md-down" *ngIf="!isLoggedIn">
+        <button type="button" routerLinkActive="active" [routerLink]="['/pages/login']" class="btn btn-success btn-sm">Connexion</button>
     </li>&nbsp; 
-    <li class="nav-item hidden-md-down nav-item dropdown" dropdown (onToggle)="toggled($event)">
+
+    <li class="nav-item hidden-md-down" *ngIf="isLoggedIn">
+      <button type="button" routerLinkActive="active" (click)="logout()" class="btn btn-danger btn-sm">Déconnexion</button>
+  </li>&nbsp; 
+
+    <li class="nav-item hidden-md-down nav-item dropdown" dropdown (onToggle)="toggled($event)" *ngIf="!isLoggedIn">
         
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
-            <button type="button"  class="btn btn-danger btn-sm">Inscription</button>
+            <button type="button"  class="btn btn-primary btn-sm">Inscription</button>
           </a>
           <div class="dropdown-menu dropdown-menu-right" dropdownMenu aria-labelledby="simple-dropdown">
     
@@ -36,6 +43,8 @@
             
           </div>
       </li>
+
+
     <!--<li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
         <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
@@ -85,7 +94,7 @@
             par Catégories</a>
           <ul *ngFor="let item of items" class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/modals']"><i class="icon-puzzle"></i> {{item.secteur}}</a>
+              <a class="nav-link" (click)="selectBySecteur(item.secteur)"><i class="icon-puzzle"></i> {{item.secteur}}</a>
             </li>
             
           </ul>
@@ -153,7 +162,7 @@
 
   <aside class="aside-menu">
       <img src="assets/img/avatars/6.jpg" alt="admin@bootstrapmaster.com">
-      <span class="hidden-md-down">admin</span>
+      <span class="hidden-md-down" *ngIf="isLoggedIn">{{name}}</span>
 
         <div class="dropdown-header text-center"><strong>Operations</strong></div>
 

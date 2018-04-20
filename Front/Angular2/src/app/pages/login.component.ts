@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-
+import { NgForm } from '@angular/forms';
 import { MyServiceService } from '../my-service.service';
 import { Router } from '@angular/router';
 
@@ -12,13 +12,16 @@ export class LoginComponent  implements OnInit {
     myForm: FormGroup;
     error = false;
     errorMessage = '';
-
+    user:{username?: String, password?: String} = {};
     constructor(private myService:MyServiceService, private fb: FormBuilder, private router: Router) {}
 
-    onSignin(username: String, password: String) {
-      this.myService.login({username: username, password: password})
+    onSignin(form: NgForm) {
+      //console.log(this.user.username);
+      this.myService.login({username: this.user.username, password: this.user.password})
       .subscribe(
-        data => this.router.navigate(['dashboard'])
+        data =>  {
+          console.log(data)
+          this.router.navigate(['dashboard'])}
       );
     }
 

@@ -21,6 +21,7 @@ import { CommonModule } from '@angular/common'
 // Components Routing
 import { ComponentsRoutingModule } from './components-routing.module';
 import { OffresComponent } from './offres.component';
+import { OffresSecteursComponent } from './offres-secteurs.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { OffresComponent } from './offres.component';
     TabsComponent,
     EntrepriseComponent,
     OffresComponent,
-    OffresEntrepriseComponent 
+    OffresEntrepriseComponent,
+    OffresSecteursComponent 
   ]
 })
 export class ComponentsModule { }

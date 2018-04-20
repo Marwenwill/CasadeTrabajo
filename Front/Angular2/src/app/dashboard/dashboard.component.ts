@@ -488,6 +488,6 @@ export class DashboardComponent implements OnInit {
       
   }
   offreEntreprise(id: number){
-    this.router.navigate(['/components', id])
+    this.router.navigate(['/components/offres/', id])
     }
 }
