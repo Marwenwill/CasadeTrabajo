@@ -28,6 +28,12 @@ class RecruteurByIdSerializer(serializers.ModelSerializer):
 		model = Recruteur
 		fields = ( 'entrepriseName','emplacement', 'logo')
 
+class EmplacementSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Recruteur
+		fields = ('emplacement',)
+
 class OffreSerializer(serializers.ModelSerializer):
     entrepriseName = RecruteurByIdSerializer(source='idRecruteur', read_only=True)
 
@@ -45,4 +51,17 @@ class NatureSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Offre
-		fields = ('nature',)			
+		fields = ('nature',)
+
+class EmplacementSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Recruteur
+		fields = ('emplacement',)		
+
+class VilleSerializer(serializers.ModelSerializer):
+	emplacements = EmplacementSerializer(source='idRecruteur', read_only=True)
+
+	class Meta:
+		model = Offre
+		fields = ( 'emplacements',)				

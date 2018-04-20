@@ -13,6 +13,10 @@ import { EntrepriseComponent } from './entreprise.component';
 import { OffresComponent } from './offres.component';
 import { OffresEntrepriseComponent } from './offres-entreprise.component';
 import { OffresSecteursComponent } from './offres-secteurs.component';
+import { OfrresNatureComponent } from './ofrres-nature.component'
+import { EntrepriseEmplacementComponent } from './entreprise-emplacement.component'
+
+
 const routes: Routes = [
   {
     path: '',
@@ -42,17 +46,17 @@ const routes: Routes = [
         }
       },
       {
-        path: 'modals',
-        component: ModalsComponent,
+        path: 'emplacements/:emplacement',
+        component: EntrepriseEmplacementComponent,
         data: {
-          title: 'Modals'
+          title: 'Locations'
         }
       },
       {
-        path: 'social-buttons',
-        component: SocialButtonsComponent,
+        path: 'natures/:nature',
+        component: OfrresNatureComponent,
         data: {
-          title: 'Social buttons'
+          title: 'Natures offres'
         }
       },
       {
@@ -66,11 +70,11 @@ const routes: Routes = [
         path: 'entreprise',
         component: EntrepriseComponent,
         data: {
-          title: 'Tables'
+          title: 'Entreprise'
         }
       },
       {
-        path: ':secteur',
+        path: 'secteurs/:secteur',
         component: OffresSecteursComponent,
         data: {
           title: 'Secteurs Entreprise'

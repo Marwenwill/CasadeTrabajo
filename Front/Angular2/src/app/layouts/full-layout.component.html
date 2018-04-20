@@ -103,32 +103,27 @@
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> par Type d'emploi</a>
           <ul *ngFor="let item of itemsNature" class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/modals']"><i class="icon-star"></i> {{item.nature}}</a>
+              <a class="nav-link" (click)="selectByTypeEmploi(item.nature)"><i class="icon-star"></i> {{item.nature}}</a>
             </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/widgets']"><i class="icon-calculator"></i>  par Ville  <span class="badge badge-info">NEW</span></a>
+        <li class="nav-item nav-dropdown" routerLinkActive="open">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> par Ville</a>
+          <ul *ngFor="let item of itemsVille" class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" (click)="selectByVille(item.emplacement)"><i class="icon-star"></i> {{item.emplacements.emplacement}}</a>
+            </li>
+          </ul>
         </li>
-        
         <li class="divider"></li>
         <li class="nav-title">
           Entreprises
         </li>
-        <li class="nav-item nav-dropdown">
+        <li *ngIf="check" class="nav-item nav-dropdown">
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Affiner par Ville </a>
-          <ul class="nav-dropdown-items">
+          <ul *ngFor="let item of itemsEmplacement" class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/login']"><i class="icon-star"></i> Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/register']"><i class="icon-star"></i> Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/404']"><i class="icon-star"></i> Error 404</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/500']"><i class="icon-star"></i> Error 500</a>
+              <a class="nav-link" (click)="selectByEmplacement(item.emplacement)"><i class="icon-star"></i> {{item.emplacement}}</a>
             </li>
           </ul>
         </li>

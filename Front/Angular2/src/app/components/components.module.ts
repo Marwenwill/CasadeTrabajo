@@ -22,6 +22,8 @@ import { CommonModule } from '@angular/common'
 import { ComponentsRoutingModule } from './components-routing.module';
 import { OffresComponent } from './offres.component';
 import { OffresSecteursComponent } from './offres-secteurs.component';
+import { OfrresNatureComponent } from './ofrres-nature.component';
+import { EntrepriseEmplacementComponent } from './entreprise-emplacement.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { OffresSecteursComponent } from './offres-secteurs.component';
     EntrepriseComponent,
     OffresComponent,
     OffresEntrepriseComponent,
-    OffresSecteursComponent 
+    OffresSecteursComponent,
+    OfrresNatureComponent,
+    EntrepriseEmplacementComponent 
   ]
 })
 export class ComponentsModule { }

@@ -16,7 +16,11 @@ export class FullLayoutComponent implements OnInit{
   isLoggedIn: boolean = false;
   items: any[] = [];
   itemsNature: any[] = [];
+  itemsVille: any[] = [];
+  itemsEmplacement: any[] = [];
   name: string = "";
+  check: boolean =false ;
+
   public disabled: boolean = false;
   public status: {isopen: boolean} = {isopen: false};
 
@@ -53,8 +57,17 @@ export class FullLayoutComponent implements OnInit{
   }
 
   selectBySecteur(secteur: string){
-    this.router.navigate(['/components', secteur])
+    this.router.navigate(['/components/secteurs', secteur])
     }
+
+  selectByTypeEmploi(nature: string){
+    this.router.navigate(['/components/natures', nature])
+    }  
+
+  selectByEmplacement(emplacement: string){
+    this.router.navigate(['/components/emplacements', emplacement])
+    }  
+      
  
   ngOnInit(): any{
     this.myForm = this.fb.group({
@@ -69,7 +82,6 @@ export class FullLayoutComponent implements OnInit{
  
 let currUser = JSON.parse(localStorage.getItem('currentUser'));
  if (currUser != null) {
-    console.log("hello");
    this.isLoggedIn = true; 
    this.name = currUser.username;
   
@@ -86,6 +98,8 @@ let currUser = JSON.parse(localStorage.getItem('currentUser'));
         this.items = myArray;
       }
     );
+
+
     this.myService.getAllNature()
     .subscribe(
       data => {
@@ -98,6 +112,26 @@ let currUser = JSON.parse(localStorage.getItem('currentUser'));
       } 
     );
   
+    this.myService.getAllVille()
+    .subscribe(
+      data => {
+        const myArray = [];
+        for (let key in data) {
+            myArray.push(data[key]);
+            console.log(data[key]);
+        }
+        this.itemsVille = myArray;
+      } 
+    );
+
+    this.myService.getAllEmplacements()
+    .subscribe(
+      data => {
+        this.itemsEmplacement = data;
+        this. check = true;
+        console.log("Hello "+this.itemsEmplacement)
+      } 
+    );
 }
   public logout() {
     this.myService.logout();

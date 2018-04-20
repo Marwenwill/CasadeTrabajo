@@ -40,16 +40,36 @@ public getAllNature(): any {
     .map((data: Response) => data.json());
 }
 
+public getAllVille(): any {
+  return this.http.get(this.url+"/Ville/",this.options)
+    .map((data: Response) => data.json());
+}
+
+public getAllEmplacements(): any {
+  return this.http.get(this.url+"/Emplacement/",this.options)
+    .map((data: Response) => data.json());
+}
 public getOffreById(id: number): any{
   return this.http.get(this.url+"/OffresByRecruteur/"+id)
     .map((data: Response) => data.json());
 }
 
+
 public getOffreBySecteur(secteur: string): any{
   return this.http.get(this.url+"/OffresBySecteur/"+secteur,this.options)
     .map((data: Response) => data.json());
 }
-    
+   
+public getOffreByNature(nature: string): any{
+  return this.http.get(this.url+"/OffresByNature/"+nature,this.options)
+    .map((data: Response) => data.json());
+}
+
+public getEntrepriseByLocation(emplacement: string): any{
+  return this.http.get(this.url+"/EntrepriseByLocation/"+emplacement,this.options)
+    .map((data: Response) => data.json());
+}
+
 public sendDataCandidat(user: any){
   const body = JSON.stringify(user);
     return this.http.post(this.url+"/Candidats/", body, this.options)
