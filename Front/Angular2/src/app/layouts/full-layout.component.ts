@@ -6,6 +6,8 @@ import { MyServiceService } from '../my-service.service'
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { Console } from '@angular/core/src/console';
+import { error } from 'selenium-webdriver';
 
 
 @Component({
@@ -18,7 +20,9 @@ export class FullLayoutComponent implements OnInit{
   itemsNature: any[] = [];
   itemsVille: any[] = [];
   itemsEmplacement: any[] = [];
+  itemsEntreprise: any[] = [];
   name: string = "";
+  email : string = ""
   check: boolean =false ;
 
   public disabled: boolean = false;
@@ -36,21 +40,28 @@ export class FullLayoutComponent implements OnInit{
   myForm: FormGroup;
   error = false;
   errorMessage = '';
-  dateAjout:string;
+  datet:string;
   id: number = 1;
 
   constructor(private myService: MyServiceService, private fb: FormBuilder, private router: Router) { 
-    this.dateAjout = 'Angular2'
+    this.datet = 'Angular2'
 
     let dp = new DatePipe('de-DE' /* locale .. */);
-    this.dateAjout = dp.transform(new Date(), 'yyyy-MM-dd');
-    console.log(this.dateAjout);
+    this.datet = dp.transform(new Date(), 'yyyy-MM-dd');
+    console.log(this.datet);
   }
 
 
   public onSubmit(title: string, nature: String, duree: String, niveau: String, description: String, salaire: String,  secteur: String) {
-    console.log(title, nature, duree, this.dateAjout, this.id, description)
-    this.myService.sendDataOffres({ title: title, dateAjout: this.dateAjout, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, secteur:secteur, id:this.id})
+    console.log(title, nature, duree, this.datet, this.id, description)
+    if (this.isLoggedIn){
+      console.log('logged in')
+    }
+    else{
+      console.log("Not logged in")
+    }
+
+    this.myService.sendDataOffres({ title: title, datet: this.datet, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, secteur:secteur, id:this.id})
       .subscribe(
         data => console.log(data)
       );
@@ -65,7 +76,7 @@ export class FullLayoutComponent implements OnInit{
     }  
 
   selectByEmplacement(emplacement: string){
-    this.router.navigate(['/components/emplacements', emplacement])
+    this.router.navigate(['/components/emplacements'])
     }  
       
  
@@ -81,11 +92,24 @@ export class FullLayoutComponent implements OnInit{
   });
  
 let currUser = JSON.parse(localStorage.getItem('currentUser'));
+console.log(currUser)
  if (currUser != null) {
-   this.isLoggedIn = true; 
-   this.name = currUser.username;
+   this.isLoggedIn = true;
+   this.name =  currUser.username
+   this.email = this.myService.email
+   console.log("Current user= "+currUser.username)
   
   }
+
+  this.myService.getRecruteurById()
+    .subscribe(
+      data => {
+        console.log(data)
+        this.itemsEntreprise = data;
+        this. check = true;
+      },
+      (error) => {console.log(error);}
+    );
 
     this.myService.getAllSecteurs()
     .subscribe(
@@ -129,12 +153,12 @@ let currUser = JSON.parse(localStorage.getItem('currentUser'));
       data => {
         this.itemsEmplacement = data;
         this. check = true;
-        console.log("Hello "+this.itemsEmplacement)
       } 
-    );
+    );  
+  
 }
   public logout() {
     this.myService.logout();
-    location.reload();
+    this.router.navigate(['/pages/login']);
   }
 }

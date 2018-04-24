@@ -7,16 +7,17 @@
             <div class="card-block">
               <h1>Login</h1>
               <p class="text-muted">Sign In to your account</p>
-              <form #myForm="ngForm" (ngSubmit)="onSignin(myForm)">
+              <form [formGroup]="myForm" (ngSubmit)="onSignin(myForm)">
                 
               <div class="input-group mb-1">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
-                <input [(ngModel)]="user.username" type="text" name="username" #username="ngModel" class="form-control" placeholder="username" #username>
+                <input formControlName="username" [(ngModel)]="user.username" type="text" name="username" class="form-control" placeholder="username" #username>
               </div>
               <div class="input-group mb-2">
                 <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <input [(ngModel)]="user.password" type="password"  name="password" #password="ngModel" class="form-control" placeholder="Password" #password>
+                <input formControlName="password" [(ngModel)]="user.password" type="password"  name="password" class="form-control" placeholder="Password" #password>
               </div>
+              <span style="color: red">{{errorMsg}}</span>
               <div class="row">
                 <div class="col-6">
                   <button type="submit" [disabled]="!myForm.valid" (click)="onSignin(myForm)" class="btn btn-primary px-2">Login</button>
@@ -32,8 +33,9 @@
             <div class="card-block text-center">
               <div>
                 <h2>Sign up</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <button type="button" class="btn btn-primary active mt-1" routerLinkActive="active" [routerLink]="['/pages/register']">Register Now!</button>
+                <p>Sign up pour pouvoir adhérer notre plateforme et avoir la chance de postuler à votre offre de rêve. </p>
+                <button type="button" class="btn btn-primary active mt-1" routerLinkActive="active" [routerLink]="['/pages/register']">Candidat</button>
+                <button type="button" class="btn btn-primary active mt-1" routerLinkActive="active" [routerLink]="['/pages/recruteur']">Recruteur</button>
               </div>
             </div>
           </div>

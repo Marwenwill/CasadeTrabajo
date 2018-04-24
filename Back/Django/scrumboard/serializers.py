@@ -26,7 +26,7 @@ class RecruteurByIdSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Recruteur
-		fields = ( 'entrepriseName','emplacement', 'logo')
+		fields = ( 'entrepriseName','emplacement', 'logo', 'nbOffres')
 
 class EmplacementSerializer(serializers.ModelSerializer):
 

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgForm } from '@angular/forms';
 import { MyServiceService } from '../my-service.service';
 import { Router } from '@angular/router';
+import { error } from 'util';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -11,7 +12,9 @@ import { Router } from '@angular/router';
 export class LoginComponent  implements OnInit {
     myForm: FormGroup;
     error = false;
-    errorMessage = '';
+    errorMsg = '';
+
+    
     user:{username?: String, password?: String} = {};
     constructor(private myService:MyServiceService, private fb: FormBuilder, private router: Router) {}
 
@@ -21,14 +24,19 @@ export class LoginComponent  implements OnInit {
       .subscribe(
         data =>  {
           console.log(data)
-          this.router.navigate(['dashboard'])}
+          this.router.navigate(['dashboard'])},
+          (error) => {this.errorMsg = 'Failed to login';}
       );
     }
 
     ngOnInit():any {
         this.myForm = this.fb.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required],
+            username: ['', Validators.compose([
+                Validators.required
+            ])],
+            password: ['', Validators.compose([
+                Validators.required
+            ])],
         });
     }
 }

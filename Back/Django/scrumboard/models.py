@@ -29,6 +29,7 @@ class Recruteur(models.Model):
 	logo = models.CharField(max_length=100)
 	description = models.CharField(max_length=50)
 	nbEmployee = models.IntegerField(null=True, blank=True)
+	nbOffres = models.IntegerField(null=True, blank=True)
 	def __str__(self):
 		return "Recruteur: {}".format(self.recruteur_id)
 

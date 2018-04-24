@@ -7,6 +7,8 @@ export class MyServiceService {
   url:string;
   domain:string;
   token: string;
+  userid: number;
+  email: string;
   options:{headers:Headers} = {headers : null};
   
 	constructor(public http:Http) {
@@ -61,12 +63,19 @@ public getOffreBySecteur(secteur: string): any{
 }
    
 public getOffreByNature(nature: string): any{
+  //console.log(this.token)
   return this.http.get(this.url+"/OffresByNature/"+nature,this.options)
     .map((data: Response) => data.json());
 }
 
 public getEntrepriseByLocation(emplacement: string): any{
   return this.http.get(this.url+"/EntrepriseByLocation/"+emplacement,this.options)
+    .map((data: Response) => data.json());
+}
+
+public getRecruteurById(): any {
+  console.log("UserId = "+this.userid)
+  return this.http.get(this.url+"/Recruteurs/1",this.options)
     .map((data: Response) => data.json());
 }
 
@@ -82,7 +91,8 @@ public sendDataCandidat(user: any){
     localStorage.setItem('myapps_authtoken', token);
   }
   private setAuth() {
-    console.log(this.token);
+    this.token = localStorage.getItem('myapps_authtoken');
+    
     if(this.token != null) 
       this.options.headers.append('Authorization', "JWT "+localStorage.getItem('myapps_authtoken'));
     else
@@ -118,17 +128,16 @@ public getCountById(id: number){
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
+                this.userid = response.json().userid;
+                this.email = response.json().email;
                 if (token) {
                     // set token property
-                    
-
                     this.setToken(token);
                    // console.log(token);
                     this.setAuth();
                    // console.log(this.options.headers)
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', body);
-                    
                     // return true to indicate successful login
                     return true;
                 } else {
@@ -144,12 +153,15 @@ public getCountById(id: number){
 public logout(){
  this.setToken(null);
  localStorage.setItem('currentUser', null);
+ localStorage.removeItem('myapps_authtoken');
  this.setAuth();
 }
 
 public isLoggedIn () {
   return (this.token != null);
 }
+
+
 
 }
 

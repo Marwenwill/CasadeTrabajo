@@ -157,11 +157,12 @@
 
   <aside class="aside-menu">
       <img src="assets/img/avatars/6.jpg" alt="admin@bootstrapmaster.com">
-      <span class="hidden-md-down" *ngIf="isLoggedIn">{{name}}</span>
+      <span class="hidden-md-down" *ngIf="isLoggedIn">{{name}}-{{email}}</span>
 
         <div class="dropdown-header text-center"><strong>Operations</strong></div>
 
         <a class="dropdown-item" (click)="modal1.show()"><i class="fa fa-plus"></i> Ajouter Offre</a>
+        <a class="dropdown-item" (click)="modal1.show()"><i class="fa fa-archive"></i> Mes Offres</a>
 
         <div class="dropdown-header text-center"><strong>Settings</strong></div>
 
