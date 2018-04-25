@@ -71,12 +71,16 @@ export class FullLayoutComponent implements OnInit{
     this.router.navigate(['/components/secteurs', secteur])
     }
 
+  selectOffresById(){
+    this.router.navigate(['/components/mesoffres', this.myService.userid])
+    }  
+
   selectByTypeEmploi(nature: string){
     this.router.navigate(['/components/natures', nature])
     }  
 
   selectByEmplacement(emplacement: string){
-    this.router.navigate(['/components/emplacements'])
+    this.router.navigate(['/components/emplacements', emplacement])
     }  
       
  
@@ -97,7 +101,7 @@ console.log(currUser)
    this.isLoggedIn = true;
    this.name =  currUser.username
    this.email = this.myService.email
-   console.log("Current user= "+currUser.username)
+   console.log("Current user= "+this.myService.userid)
   
   }
 
@@ -159,6 +163,6 @@ console.log(currUser)
 }
   public logout() {
     this.myService.logout();
-    this.router.navigate(['/pages/login']);
+    this.router.navigate(['/dashboard']);//pages/login
   }
 }

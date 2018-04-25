@@ -36,11 +36,11 @@ class Recruteur(models.Model):
 @python_2_unicode_compatible
 class Offre(models.Model):			
 	title = models.CharField(max_length=100, blank=True, default=0)
-	dateAjout = models.DateField(auto_now=False, auto_now_add=False)
-	nature = models.CharField(max_length=50)
-	duree = models.CharField(max_length=50)
-	niveau = models.CharField(max_length=50)
-	description = models.CharField(max_length=10000)
+	dateAjout = models.DateField(auto_now=False, auto_now_add=False, blank=True)
+	nature = models.CharField(max_length=50, blank=True)
+	duree = models.CharField(max_length=50, blank=True)
+	niveau = models.CharField(max_length=50, blank=True)
+	description = models.CharField(max_length=10000, blank=True)
 	salaire = models.FloatField(null=True, blank=True)
 	secteur = models.CharField(max_length=50, null=True)
 	idRecruteur = models.ForeignKey(Recruteur,verbose_name = "idRecruteur", on_delete=models.CASCADE, default=None)

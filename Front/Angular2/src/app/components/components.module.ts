@@ -24,6 +24,8 @@ import { OffresComponent } from './offres.component';
 import { OffresSecteursComponent } from './offres-secteurs.component';
 import { OfrresNatureComponent } from './ofrres-nature.component';
 import { EntrepriseEmplacementComponent } from './entreprise-emplacement.component';
+import { MesoffresComponent } from './mesoffres.component';
+import { ModalEditComponent } from './modal-edit.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { EntrepriseEmplacementComponent } from './entreprise-emplacement.compone
     OffresEntrepriseComponent,
     OffresSecteursComponent,
     OfrresNatureComponent,
-    EntrepriseEmplacementComponent 
+    EntrepriseEmplacementComponent,
+    MesoffresComponent,
+    ModalEditComponent 
   ]
 })
 export class ComponentsModule { }

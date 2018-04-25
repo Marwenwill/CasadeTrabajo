@@ -7,7 +7,7 @@ export class MyServiceService {
   url:string;
   domain:string;
   token: string;
-  userid: number;
+  userid: string;
   email: string;
   options:{headers:Headers} = {headers : null};
   
@@ -19,6 +19,13 @@ export class MyServiceService {
     this.setAuth();
 	}
 
+
+  public PutOffres(user: any): any {
+    const body = JSON.stringify(user);
+    return this.http.put(this.url+"/Offres/"+this.userid, body, this.options)
+    .map((data: Response) => data.json())
+  }
+  
     public getAll(): any {
         return this.http.get(this.url+"/Recruteurs/",this.options)
           .map((data: Response) => data.json());
@@ -90,14 +97,25 @@ public sendDataCandidat(user: any){
     this.token = token;
     localStorage.setItem('myapps_authtoken', token);
   }
+
+  private setUser(userid, email) { 
+    this.userid = userid;
+    this.email = email;
+    localStorage.setItem('userid', userid);
+    localStorage.setItem('email', email);
+  }
+
+
   private setAuth() {
     this.token = localStorage.getItem('myapps_authtoken');
-    
+    this.userid = localStorage.getItem('userid');
+    this.email = localStorage.getItem('email');
     if(this.token != null) 
       this.options.headers.append('Authorization', "JWT "+localStorage.getItem('myapps_authtoken'));
     else
       this.options.headers.delete('Authorization');
 }
+
 public getCountById(id: number){
     
     return this.http.get(this.url+"/OffresparEntreprise/count/"+ id,this.options)
@@ -128,11 +146,12 @@ public getCountById(id: number){
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
-                this.userid = response.json().userid;
-                this.email = response.json().email;
+                let user = response.json().userid;
+                let email = response.json().email;
                 if (token) {
                     // set token property
                     this.setToken(token);
+                    this.setUser(user, email);
                    // console.log(token);
                     this.setAuth();
                    // console.log(this.options.headers)
@@ -154,6 +173,8 @@ public logout(){
  this.setToken(null);
  localStorage.setItem('currentUser', null);
  localStorage.removeItem('myapps_authtoken');
+ localStorage.removeItem('userid');
+ localStorage.removeItem('email');
  this.setAuth();
 }
 

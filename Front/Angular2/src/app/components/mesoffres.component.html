@@ -1,0 +1,142 @@
+<!--/.row-->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> 
+      </div>
+      <div class="card-block">
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <th>Offre Titre</th>
+              <th>Nature</th>
+              <th>Duree</th>
+              <th>Niveau</th>
+              <th>Description</th>
+              <th>Salaire</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td>{{item.title}}</td>
+              <td>{{item.nature}}</td>
+              <td>{{item.duree}}</td>
+              <td>{{item.niveau}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.salaire}} DT</td>
+              <td>
+                <i class="fa fa-edit" (click)="modalEdit.show()"></i>&nbsp;<i class="fa fa-trash"></i>
+              </td>
+              <app-modal-edit #modalEdit>
+                <div  class="app-modal-header">
+                  Ajout d'un offre
+                </div>
+                
+                <div class="app-modal-body">
+                  <div class="input-group mb-1">
+                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                    <input type="text" class="form-control" placeholder="Titre offre" id="title" #title value="{{item.title}}">
+                  </div>
+                  <div class="input-group mb-1">
+                      <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                      <select id="nature" class="form-control" size="1" #nature value="{{item.nature}}">
+                        <option value="">Nature</option>
+                        <option value="CDI">CDI</option>
+                        <option value="CDD">CDD</option>
+                        <option value="Stage">Stage</option>
+                        <option value="PFE">PFE</option>
+                        <option value="Temps plein">Temps plein</option>
+                        <option value="Temps partiel">Temps partiel</option>
+                      </select>
+                    </div>
+                    <div class="input-group mb-1">
+                        <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                        <select id="duree" class="form-control" size="1" #duree value="{{item.duree}}">
+                          <option value="">Duree</option>
+                          <option value="1 à 3 mois">1 à 3 mois</option>
+                          <option value="3 à 6 mois">3 à 6 mois</option>
+                          <option value="Durée indéterminée">Durée indéterminée</option>
+                        </select>
+                      </div>
+                      <div class="input-group mb-1">
+                          <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                          <select id="niveau" class="form-control" size="1" #niveau value={{item.niveau}}>
+                            <option value="">Niveau d'étude</option>
+                            <option value="Sans diplôme">Sans diplôme</option>
+                            <option value="Bac">Bac</option>
+                            <option value="Bac +2-BTS/DUT">Bac +2-BTS/DUT</option>
+                            <option value="Bac +3-licence Pro">Bac +3-licence Pro</option>
+                            <option value="Bac +4">Bac +4</option>
+                            <option value="Bac +5 ou plus">Bac +5 ou plus</option>
+                          </select>
+                        </div>
+                        <div class="input-group mb-1">
+                          <span class="input-group-addon"><i class="fa fa-home fa-lg mt-2"></i></span>
+                          <select id="secteur" class="form-control" size="1" #secteur value="{{item.secteur}}">
+                            <option value="">Secteur</option>
+                            <option value="Education Physique">Education Physique</option>
+                            <option value="Centres d'appels">Centres d'appels</option>
+                            <option value="Informatique">Informatique</option>
+                            <option value="Immobilier">Immobilier</option>
+                            <option value="Automatisme">Automatisme</option>
+                            <option value="Mécatronique">Mécatronique</option>
+                            <option value="Chimie">Chimie</option>
+                            <option value="Pétrolière">Pétrolière</option>
+                            <option value="Fonction publique">Fonction publique</option>
+                            <option value="Commerce">Commerce</option>
+                            <option value="Banque">Banque</option>
+                            <option value="Ingenierie">Ingenierie</option>
+                            <option value="Assurances">Assurances</option>
+                            <option value="Comptabilité">Comptabilité</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Automobile">Automobile</option>
+                            <option value="Juridique">Juridique</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Gestion">Gestion</option>
+                            <option value="Agroalimentaire">Agroalimentaire</option>
+                            <option value="Mécanique">Mécanique</option>
+                            <option value="Electricité">Electricité</option>
+                            <option value="Restauration">Restauration</option>
+                            <option value="Hôtellerie et Tourisme">Hôtellerie et Tourisme</option>
+                          </select>
+                        </div>
+                          <div class="input-group mb-1">
+                              <span class="input-group-addon"><i class="icon-user"></i></span>
+                              <textarea class="form-control" placeholder="Description" id="description" #description value="{{item.description}}"></textarea>
+                            </div> 
+                            <div class="input-group mb-1">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input type="text" class="form-control" placeholder="Salaire" id="salaire" #salaire value="{{item.salaire}}">
+                              </div>  
+                </div>
+                <div class="app-modal-footer">
+                  <button type="button" class="btn btn-default" (click)="modalEdit.hide()">Close</button>
+                  <button type="submit" (click)="onSubmit(title.value, nature.value, duree.value, niveau.value, description.value, salaire.value, secteur.value)" class="btn btn-primary">Save changes</button>
+                  </div>
+              
+              </app-modal-edit>
+            </tr>
+            
+          </tbody>
+        </table>
+        <nav>
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

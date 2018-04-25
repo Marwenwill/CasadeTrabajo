@@ -15,6 +15,7 @@ import { OffresEntrepriseComponent } from './offres-entreprise.component';
 import { OffresSecteursComponent } from './offres-secteurs.component';
 import { OfrresNatureComponent } from './ofrres-nature.component'
 import { EntrepriseEmplacementComponent } from './entreprise-emplacement.component'
+import { MesoffresComponent } from './mesoffres.component'
 
 
 const routes: Routes = [
@@ -39,10 +40,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'forms',
-        component: FormsComponent,
+        path: 'mesoffres/:id',
+        component: MesoffresComponent,
         data: {
-          title: 'Forms'
+          title: 'Mes Offres'
         }
       },
       {

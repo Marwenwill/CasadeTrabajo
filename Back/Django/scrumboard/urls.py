@@ -1,4 +1,4 @@
-from .api import CandidatViewSet, RecruteurViewSet, OffreViewSet, SecteurViewSet, NatureViewSet, OffreSecteurViewSet, OffreRecruteurViewSet, OffreNatureViewSet, VilleViewSet, EmplacementViewSet, EntrepriseLocationViewSet, CurrentUserViewSet
+from .api import CandidatViewSet, RecruteurViewSet, OffreViewSet, SecteurViewSet, NatureViewSet, OffreSecteurViewSet, OffreRecruteurViewSet, OffreNatureViewSet, VilleViewSet, EmplacementViewSet, EntrepriseLocationViewSet
 
 from rest_framework.routers import DefaultRouter
 
@@ -6,7 +6,6 @@ router = DefaultRouter();
 router.register(r'Candidats', CandidatViewSet)
 router.register(r'Recruteurs', RecruteurViewSet)
 router.register(r'Offres', OffreViewSet)
-router.register(r'CurrUser', CurrentUserViewSet, base_name='CurrUser')
 router.register(r'OffresByRecruteur/(?P<idRecruteur_id>\d+)', OffreRecruteurViewSet, base_name='Recruteurs')
 router.register(r'OffresBySecteur/(?P<secteur>[ \w]+)', OffreSecteurViewSet, base_name='Secteurs')
 router.register(r'OffresByNature/(?P<nature>[ \w]+)', OffreNatureViewSet, base_name='Natures')
