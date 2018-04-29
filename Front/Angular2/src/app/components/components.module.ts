@@ -26,6 +26,10 @@ import { OfrresNatureComponent } from './ofrres-nature.component';
 import { EntrepriseEmplacementComponent } from './entreprise-emplacement.component';
 import { MesoffresComponent } from './mesoffres.component';
 import { ModalEditComponent } from './modal-edit.component';
+import { UserComponent } from './user.component';
+import { EntrepriseProfileComponent } from './entreprise-profile.component';
+import { OffreDetailComponent } from './offre-detail.component';
+import { SearchComponent } from './search.component';
 
 
 @NgModule({
@@ -51,7 +55,11 @@ import { ModalEditComponent } from './modal-edit.component';
     OfrresNatureComponent,
     EntrepriseEmplacementComponent,
     MesoffresComponent,
-    ModalEditComponent 
+    ModalEditComponent,
+    UserComponent,
+    EntrepriseProfileComponent,
+    OffreDetailComponent,
+    SearchComponent 
   ]
 })
 export class ComponentsModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyServiceService } from '../my-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-entreprise',
@@ -8,9 +9,13 @@ import { MyServiceService } from '../my-service.service';
 export class EntrepriseComponent implements OnInit {
 
   items: any[] = [];
-  constructor(private myService:MyServiceService) {
+  constructor(private myService:MyServiceService, private router: Router) {
 
   }
+
+  entrepriseProfile(id: number){
+    this.router.navigate(['/components/EntrepriseProfile', id])
+    }
 
   ngOnInit() {
     this.myService.getAll()

@@ -16,7 +16,10 @@ import { OffresSecteursComponent } from './offres-secteurs.component';
 import { OfrresNatureComponent } from './ofrres-nature.component'
 import { EntrepriseEmplacementComponent } from './entreprise-emplacement.component'
 import { MesoffresComponent } from './mesoffres.component'
-
+import { UserComponent } from './user.component'
+import { EntrepriseProfileComponent } from './entreprise-profile.component'
+import { OffreDetailComponent } from 'app/components/offre-detail.component';
+import { SearchComponent } from 'app/components/search.component';
 
 const routes: Routes = [
   {
@@ -26,17 +29,24 @@ const routes: Routes = [
     },
     children: [
       {
-        path: 'buttons',
-        component: ButtonsComponent,
+        path: 'EntrepriseProfile/:id',
+        component: EntrepriseProfileComponent,
         data: {
-          title: 'Buttons'
+          title: 'Entreprise Detail'
         }
       },
       {
-        path: 'cards',
-        component: CardsComponent,
+        path: 'profile',
+        component: UserComponent,
         data: {
-          title: 'Cards'
+          title: 'Edit Profile'
+        }
+      },
+      {
+        path: 'search/:toFind',
+        component: SearchComponent,
+        data: {
+          title: 'Edit Profile'
         }
       },
       {
@@ -79,6 +89,13 @@ const routes: Routes = [
         component: OffresSecteursComponent,
         data: {
           title: 'Secteurs Entreprise'
+        }
+      },
+      {
+        path: 'OffreDetail/:id',
+        component: OffreDetailComponent,
+        data: {
+          title: 'Offre Détail'
         }
       },
       {

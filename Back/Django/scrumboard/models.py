@@ -27,7 +27,7 @@ class Recruteur(models.Model):
 	webSite = models.CharField(max_length=50)
 	emplacement = models.CharField(max_length=50)
 	logo = models.CharField(max_length=100)
-	description = models.CharField(max_length=50)
+	description = models.CharField(max_length=50000)
 	nbEmployee = models.IntegerField(null=True, blank=True)
 	nbOffres = models.IntegerField(null=True, blank=True)
 	def __str__(self):

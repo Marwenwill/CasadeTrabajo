@@ -22,7 +22,7 @@ class RecruteurByIdViewSet(ModelViewSet):
 class OffreViewSet(ModelViewSet):
 	queryset = Offre.objects.all()
 	serializer_class = OffreSerializer
-	#permission_classes = (permissions.IsAuthenticated,) 
+	#permission_classes = (permissions.IsAuthenticated,)
 
 
 	def perform_create(self, serializer):
@@ -43,9 +43,9 @@ class OffreNatureViewSet(ModelViewSet):
 		return self.queryset.filter(nature=self.kwargs['nature'])
 
 class OffreRecruteurViewSet(ModelViewSet):
-	#permission_classes = (permissions.IsAuthenticated,) 
 	queryset = Offre.objects.all()
 	serializer_class = OffreSerializer
+	#permission_classes = (permissions.IsAuthenticated,) 
 	def get_queryset(self, *args, **kwargs):
 		return self.queryset.filter(idRecruteur_id=self.kwargs['idRecruteur_id'])
 
@@ -55,6 +55,13 @@ class EntrepriseLocationViewSet(ModelViewSet):
 	#permission_classes = (permissions.IsAuthenticated,) 
 	def get_queryset(self, *args, **kwargs):
 		return self.queryset.filter(emplacement=self.kwargs['emplacement'])
+
+class SearchViewSet(ModelViewSet):
+	queryset = Offre.objects.all()
+	serializer_class = OffreSerializer
+	#permission_classes = (permissions.IsAuthenticated,) 
+	def get_queryset(self, *args, **kwargs):
+		return self.queryset.filter(title__contains=self.kwargs['toFind'])
 
 class SecteurViewSet(ModelViewSet):
 	queryset = Offre.objects.values( 'secteur',).distinct()

@@ -12,7 +12,16 @@
     <li class="nav-item px-1">
       <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/entreprise']">Entreprises</a>
     </li>
-  
+    <li class="nav-item px-1">
+        <div class="col-md-12">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" (click)="search(input.value)"><i class="fa fa-search"></i> Search</button>
+              </span>
+              <input type="text" id="input" name="input" class="form-control" placeholder="Username" #input>
+            </div>
+          </div>
+    </li>
   </ul>
   
   <ul class="nav navbar-nav ml-auto">
@@ -166,7 +175,7 @@
 
         <div class="dropdown-header text-center"><strong>Settings</strong></div>
 
-        <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+        <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/components/profile']" href="#"><i class="fa fa-user"></i> Profile</a>
         <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>
         <a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="badge badge-default">42</span></a>
         <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a>

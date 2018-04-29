@@ -14,6 +14,7 @@ export class MyServiceService {
 	constructor(public http:Http) {
     this.domain = "http://127.0.0.1:8000"
     this.url = this.domain+"/scrumboard";
+    this.options = new RequestOptions({ headers: new Headers() });
     this.options.headers = new Headers();
     this.options.headers.append('Content-Type', 'application/json');
     this.setAuth();
@@ -59,12 +60,18 @@ public getAllEmplacements(): any {
     .map((data: Response) => data.json());
 }
 public getOffreById(id: number): any{
-  return this.http.get(this.url+"/OffresByRecruteur/"+id)
+  return this.http.get(this.url+"/OffresByRecruteur/"+id, this.options)
+    .map((data: Response) => data.json());
+}
+
+public offreById(id: number): any{
+  return this.http.get(this.url+"/Offres/"+id, this.options)
     .map((data: Response) => data.json());
 }
 
 
 public getOffreBySecteur(secteur: string): any{
+  console.log(this.url+"/OffresBySecteur/"+secteur);
   return this.http.get(this.url+"/OffresBySecteur/"+secteur,this.options)
     .map((data: Response) => data.json());
 }
@@ -80,9 +87,8 @@ public getEntrepriseByLocation(emplacement: string): any{
     .map((data: Response) => data.json());
 }
 
-public getRecruteurById(): any {
-  console.log("UserId = "+this.userid)
-  return this.http.get(this.url+"/Recruteurs/1",this.options)
+public getRecruteurById(id : Number): any {
+  return this.http.get(this.url+"/Recruteurs/"+id,this.options)
     .map((data: Response) => data.json());
 }
 
@@ -123,6 +129,10 @@ public getCountById(id: number){
 
     }
 
+public search(toFind: string){
+  return this.http.get(this.url+"/Search/"+ toFind,this.options)
+      .map((data: Response) => data.json())
+}
     public sendDataRecruteur(user: any){
       const body = JSON.stringify(user);
       return this.http.post(this.url+"/Recruteurs/", body, this.options)
@@ -133,7 +143,7 @@ public getCountById(id: number){
 
     public sendDataOffres(user: any){
       const body = JSON.stringify(user);
-      
+      console.log(body)
       return this.http.post(this.url+"/Offres/", body, this.options)
         .map((data: Response) => data.json())
 

@@ -1,0 +1,113 @@
+<div *ngIf="check" class="main-content" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h2 style="text-align: center; font-family: 'Comfortaa', cursive;" class="title">{{items.title}}</h2>
+                    </div>
+                    <br><hr><br>
+                    <div class="content">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-1"></div> 
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <p style="text-align: justify; font-family: 'Comfortaa', cursive;"><u><b>Description:</b></u> </p>
+                                        <p>{{items.description}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div> 
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-1"></div> 
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <p style="text-align: justify; font-family: 'Comfortaa', cursive;"><u><b>Nature:</b></u> </p>
+                                        <p>{{items.nature}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div> 
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-1"></div> 
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <p style="text-align: justify; font-family: 'Comfortaa', cursive;"><u><b>Durée:</b></u> </p>
+                                        <p>{{items.duree}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div> 
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-1"></div> 
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <p style="text-align: justify; font-family: 'Comfortaa', cursive;"><u><b>Niveau:</b></u> </p>
+                                        <p>{{items.niveau}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div> 
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-1"></div> 
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <p style="text-align: justify; font-family: 'Comfortaa', cursive;"><u><b>Secteur:</b></u> </p>
+                                        <p>{{items.secteur}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div> 
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-1"></div> 
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <p style="text-align: justify; font-family: 'Comfortaa', cursive;"><u><b>Salaire:</b></u> </p>
+                                        <p>{{items.salaire}} DT</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div> 
+                            </div>
+                            <div class="clearfix text-center">
+                                <button class="btn btn-info btn-fill " (click)="offreEntreprise()" >Postuler!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <br>
+                    <div class="image text-center">
+                        <br>
+                        <img src="{{items.entrepriseName.logo}}" style="height:50px;" alt="..."/>
+                    </div>
+                    <div class="content text-center">
+                        <br>
+                        <p class="description text-center"><i class="fa fa-map-marker"></i>&nbsp;{{items.entrepriseName.emplacement}} <br>
+                          <i class="fa fa-phone"></i>&nbsp;{{items.entrepriseName.tel}} <br>
+                          <i class="fa fa-envelope"></i>&nbsp;{{items.entrepriseName.email}} <br>
+                          <i class="fa fa-globe"></i>&nbsp;{{items.entrepriseName.webSite}} <br>
+                          <i class="fa fa-users"></i>&nbsp;{{items.entrepriseName.nbEmployee}} Employés <br>
+                          <i class="fa fa-box-open "></i>&nbsp;{{items.entrepriseName.nbOffres}} Offres
+                        </p>
+                        <button class="btn btn-info btn-fill " (click)="offreEntreprise(items.entrepriseName.recruteur_id)" >Voir toutes les offres!</button>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

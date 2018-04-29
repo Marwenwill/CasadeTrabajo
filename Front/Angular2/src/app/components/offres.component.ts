@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MyServiceService } from '../my-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-offres',
@@ -10,9 +11,13 @@ export class OffresComponent implements OnInit {
 
   items: any[] = [];
   x: string;
-  constructor(private myService:MyServiceService) {
+  constructor(private myService:MyServiceService, private router: Router) {
 
   }
+
+  offreProfile(id: number){
+    this.router.navigate(['/components/OffreDetail/', id]);
+  } 
 
   ngOnInit() {
     this.x = 'hello';
