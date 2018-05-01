@@ -22,7 +22,6 @@ export class OffreDetailComponent implements OnInit {
       this.myService.offreById(this.offreIndex)
       .subscribe(
         data => {
-          console.log("data is "+data['entrepriseName.entrepriseName'])
           this.items = data;
           this.check = true;
           }

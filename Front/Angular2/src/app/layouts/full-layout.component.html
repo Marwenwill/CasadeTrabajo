@@ -18,16 +18,14 @@
               <span class="input-group-btn">
                 <button type="button" class="btn btn-primary" (click)="search(input.value)"><i class="fa fa-search"></i> Search</button>
               </span>
-              <input type="text" id="input" name="input" class="form-control" placeholder="Username" #input>
+              <input type="text" id="input" name="input" class="form-control" placeholder="Search" #input>
             </div>
           </div>
     </li>
   </ul>
   
   <ul class="nav navbar-nav ml-auto">
-    <li class="nav-item hidden-md-down">
-      <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
-    </li>
+    
 
 
     <li class="nav-item hidden-md-down" *ngIf="!isLoggedIn">
@@ -117,10 +115,18 @@
           </ul>
         </li>
         <li class="nav-item nav-dropdown" routerLinkActive="open">
-          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> par Ville</a>
-          <ul *ngFor="let item of itemsVille" class="nav-dropdown-items">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> par Duree</a>
+          <ul *ngFor="let item of itemsDuree" class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" (click)="selectByVille(item.emplacement)"><i class="icon-star"></i> {{item.emplacements.emplacement}}</a>
+              <a class="nav-link" (click)="selectByDuree(item.duree)"><i class="icon-star"></i> {{item.duree}}</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item nav-dropdown" routerLinkActive="open">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> par Niveau</a>
+          <ul *ngFor="let item of itemsNiveau" class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" (click)="selectByNiveau(item.niveau)"><i class="icon-star"></i> {{item.niveau}}</a>
             </li>
           </ul>
         </li>
@@ -151,9 +157,7 @@
       <!-- Breadcrumb Menu-->
       <li class="breadcrumb-menu hidden-md-down">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-          <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
           <a class="btn btn-secondary" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Accueil</a>
-          <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
         </div>
       </li>
       

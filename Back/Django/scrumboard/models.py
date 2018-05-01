@@ -3,8 +3,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class Candidat(models.Model):			
-	name = models.CharField(max_length=50)
-	lastName = models.CharField(max_length=50)
+	username = models.CharField(max_length=50)
 	email = models.CharField(max_length=50)
 	tel = models.CharField(max_length=50, default=0)
 	password = models.CharField(max_length=50)
@@ -12,14 +11,13 @@ class Candidat(models.Model):
 	birthDate = models.DateField(auto_now=False, auto_now_add=False)
 	gouvernorate = models.CharField(max_length=50)
 	def __str__(self):
-		return "Candidat: {}".format(self.name)
+		return "Candidat: {}".format(self.username)
 
 
 @python_2_unicode_compatible
 class Recruteur(models.Model):	
 	recruteur_id = models.AutoField(primary_key=True,verbose_name="Recruteur") 		
-	name = models.CharField(max_length=50)
-	lastName = models.CharField(max_length=50)
+	username = models.CharField(max_length=50)
 	email = models.CharField(max_length=50)
 	tel = models.CharField(max_length=50, default=0)
 	password = models.CharField(max_length=50)
@@ -31,7 +29,7 @@ class Recruteur(models.Model):
 	nbEmployee = models.IntegerField(null=True, blank=True)
 	nbOffres = models.IntegerField(null=True, blank=True)
 	def __str__(self):
-		return "Recruteur: {}".format(self.recruteur_id)
+		return "Recruteur: {}".format(self.entrepriseName)
 
 @python_2_unicode_compatible
 class Offre(models.Model):			
@@ -48,5 +46,13 @@ class Offre(models.Model):
 	def __str__(self):
 		return "Offre: {}".format(self.title)		
 		
+
+@python_2_unicode_compatible
+class Candidature(models.Model):			
+	dateAjout = models.DateField(auto_now=False, auto_now_add=False, blank=True)
+	idCandidat = models.ManyToManyField(Candidat,verbose_name = "idCandidat")
+	idOffre = models.ManyToManyField(Offre,verbose_name = "idOffre")
+	def __str__(self):
+		return "Candidature: {}".format(self.id)			
 
 

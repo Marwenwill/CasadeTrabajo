@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 
 
-from .models import Candidat, Recruteur, Offre
+from .models import Candidat, Recruteur, Offre, Candidature
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -14,6 +14,12 @@ class CandidatSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Candidat
+		fields = '__all__'
+
+class CandidatureSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Candidature
 		fields = '__all__'
 
 class RecruteurSerializer(serializers.ModelSerializer):
@@ -53,6 +59,19 @@ class NatureSerializer(serializers.ModelSerializer):
 		model = Offre
 		fields = ('nature',)
 
+class DureeSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Offre
+		fields = ('duree',)
+
+class NiveauSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Offre
+		fields = ('niveau',)
+
+
 class EmplacementSerializer(serializers.ModelSerializer):
 
 	class Meta:
@@ -64,4 +83,14 @@ class VilleSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Offre
-		fields = ( 'emplacements',)				
+		fields = ( 'emplacements',)		
+
+class CountCSerializer(serializers.ModelSerializer):
+	user_count = serializers.SerializerMethodField()
+
+	class Meta:
+		model = Recruteur
+		fields = ( 'user_count',)	
+
+	def get_user_count(self, obj):
+		return Recruteur.objects.distinct().count()

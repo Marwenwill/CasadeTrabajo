@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MyServiceService } from '../my-service.service'
 
@@ -14,7 +14,13 @@ export class EntrepriseEmplacementComponent implements OnInit {
   items : any[] = [];
   check: boolean =false ;
 
-  constructor(private route: ActivatedRoute, private myService: MyServiceService) { }
+  constructor(private route: ActivatedRoute, private myService: MyServiceService, private router: Router) {
+
+  }
+
+  entrepriseProfile(id: number){
+    this.router.navigate(['/components/EntrepriseProfile', id])
+    }
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe((params: any) => {
@@ -24,7 +30,6 @@ export class EntrepriseEmplacementComponent implements OnInit {
         data => {
           const myArray = [];
           for (let key in data) {
-            console.log(data[key])
               myArray.push(data[key]);
           }
           this. check = true;

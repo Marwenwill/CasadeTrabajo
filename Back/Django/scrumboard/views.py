@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
 from rest_framework import generics
-
+from rest_framework.decorators import api_view
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
@@ -11,3 +11,4 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+

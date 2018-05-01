@@ -4,19 +4,15 @@
       <div class="col-md-6">
         <div class="card mx-2">
           <div class="card-block p-2">
-            <h1>Register</h1>
-            <p class="text-muted">Create your account</p>
+            <h1>S'inscrire</h1>
+              <p class="text-muted">Créer votre profil Candidat</p>
             <form [formGroup]="myForm" (ngSubmit)="onSignup()">
             <div class="input-group mb-1">
               <span class="input-group-addon"><i class="icon-user"></i></span>
-              <input type="text" formControlName="name" class="form-control" placeholder="Name" id="name" #name>
+              <input type="text" formControlName="username" class="form-control" placeholder="username" id="username" #username>
             </div>
 
-            <div class="input-group mb-1">
-              <span class="input-group-addon"><i class="icon-user"></i></span>
-              <input type="text" formControlName="lastName" class="form-control" placeholder="Last name" id="lastName" #lastName>
-            </div>
-            
+                       
             <div class="input-group mb-1">
               <span class="input-group-addon">@</span>
               <input type="text" formControlName="email" class="form-control" placeholder="Email" id="email" #email>
@@ -38,13 +34,13 @@
 
             <div class="input-group mb-2">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
-              <input formControlName="confirmation" type="password" class="form-control" placeholder="Repeat password" id="confirmation" #confirmation>
+              <input formControlName="confirmation" type="password" class="form-control" placeholder="Repéter password" id="confirmation" #confirmation>
               <span *ngIf="!confirmation.pristine && confirmation.errors != null && confirmation.errors['passwordsNotMatch']">Passwords do not match</span>
             </div>
             
             <div class="input-group mb-2">
               <span class="input-group-addon"><i class="fa fa-calendar fa-lg mt-2"></i></span>
-              <input type="date" formControlName="birthDate" class="form-control" placeholder="Date" id="birthDate" #birthDate>
+              <input type="date" formControlName="birthDate" class="form-control" placeholder="Date de naissance" id="birthDate" #birthDate>
             </div>
 
             <div class="input-group mb-1">
@@ -91,7 +87,7 @@
               </div>
             </div>
 
-            <button type="submit" (click)="onSubmit(name.value, lastName.value, email.value, tel.value, password.value, civility.value, birthDate.value, gouvernorate.value)" class="btn btn-block btn-success">Create Account</button>
+            <button type="submit" (click)="onSubmit(username.value, email.value, tel.value, password.value, civility.value, birthDate.value, gouvernorate.value)" class="btn btn-block btn-success">Créer Compte</button>
             </form>
           </div>
           <div class="card-footer p-2">

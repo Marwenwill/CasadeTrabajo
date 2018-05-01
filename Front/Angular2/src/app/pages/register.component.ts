@@ -13,10 +13,11 @@ export class RegisterComponent implements OnInit {
   constructor(private myService:MyServiceService, private fb: FormBuilder) {
 
   }
-  public onSubmit(name: string, lastName: String, email: String, tel: String, password: String, civility: String, birthDate: Date, gouvernorate: String) {
-    this.myService.sendDataCandidat({ name: name, lastName: lastName, email: email, tel: tel, password: password, civility: civility, birthDate: birthDate, gouvernorate: gouvernorate})
+  public onSubmit(username: string, email: string, tel: string, password: string, civility: string, birthDate: Date, gouvernorate: string) {
+    this.myService.sendDataCandidat({ username: username, email: email, tel: tel, password: password, civility: civility, birthDate: birthDate, gouvernorate: gouvernorate})
       .subscribe(
-        data => console.log(data)
+        data => console.log("sibon"+data),
+        (error) => {console.log("lele"+error)}
       );
   }
 
@@ -26,8 +27,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): any {
       this.myForm = this.fb.group({
-          name: ['', Validators.required],
-          lastName: ['', Validators.required],
+          username: ['', Validators.required],
           tel: ['', Validators.required],
           email: ['', Validators.compose([
               Validators.required,

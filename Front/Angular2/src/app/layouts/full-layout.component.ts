@@ -18,9 +18,10 @@ export class FullLayoutComponent implements OnInit{
   isLoggedIn: boolean = false;
   items: any[] = [];
   itemsNature: any[] = [];
-  itemsVille: any[] = [];
+  itemsDuree: any[] = [];
   itemsEmplacement: any[] = [];
   itemsEntreprise: any[] = [];
+  itemsNiveau: any[] = [];
   name: string = "";
   email : string = ""
   check: boolean =false ;
@@ -68,20 +69,29 @@ export class FullLayoutComponent implements OnInit{
   }
 
   search(toFind: string){
-    console.log(toFind)
     this.router.navigate(['/components/search', toFind])
   }
+
+  selectByDuree(duree: string){
+    this.router.navigate(['/components/duree', duree])
+  }
+
   selectBySecteur(secteur: string){
     this.router.navigate(['/components/secteurs', secteur])
     }
 
   selectOffresById(){
-    this.router.navigate(['/components/mesoffres', this.myService.userid])
+    console.log(this.myService.userid)
+    this.router.navigate(['/components/mesoffres', 1])
     }  
 
   selectByTypeEmploi(nature: string){
     this.router.navigate(['/components/natures', nature])
     }  
+  
+    selectByNiveau(niveau: string){
+      this.router.navigate(['/components/niveau', niveau])
+      }   
 
   selectByEmplacement(emplacement: string){
     this.router.navigate(['/components/emplacements', emplacement])
@@ -100,23 +110,19 @@ export class FullLayoutComponent implements OnInit{
   });
  
 let currUser = JSON.parse(localStorage.getItem('currentUser'));
-console.log(currUser)
  if (currUser != null) {
    this.isLoggedIn = true;
    this.name =  currUser.username
    this.email = this.myService.email
-   console.log("Current user= "+this.myService.userid)
   
   }
 
   this.myService.getRecruteurById(1)
     .subscribe(
       data => {
-        console.log(data)
         this.itemsEntreprise = data;
         this. check = true;
-      },
-      (error) => {console.log(error);}
+      }
     );
 
     this.myService.getAllSecteurs()
@@ -125,10 +131,10 @@ console.log(currUser)
         const myArray = [];
         for (let key in data) {
             myArray.push(data[key]);
-            console.log(data[key]);
         }
         this.items = myArray;
-      }
+      },
+      (error) => {console.log("Hello " + error);}
     );
 
 
@@ -138,21 +144,20 @@ console.log(currUser)
         const myArray = [];
         for (let key in data) {
             myArray.push(data[key]);
-            console.log(data[key]);
         }
         this.itemsNature = myArray;
-      } 
+      } ,
+      (error) => {console.log("Hello " + error);}
     );
   
-    this.myService.getAllVille()
+    this.myService.getAllDuree()
     .subscribe(
       data => {
         const myArray = [];
         for (let key in data) {
             myArray.push(data[key]);
-            console.log(data[key]);
         }
-        this.itemsVille = myArray;
+        this.itemsDuree = myArray;
       } 
     );
 
@@ -161,8 +166,18 @@ console.log(currUser)
       data => {
         this.itemsEmplacement = data;
         this. check = true;
-      } 
+      },
+      (error) => {console.log("Hello " + error);} 
     );  
+
+    this.myService.getAllNiveau()
+    .subscribe(
+      data => {
+        this.itemsNiveau = data;
+        this. check = true;
+      },
+      (error) => {console.log(error);} 
+    ); 
   
 }
   public logout() {

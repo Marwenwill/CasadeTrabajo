@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router/src/router_state';
 import { Subscription } from 'rxjs/Subscription';
 
 import { MyServiceService } from '../my-service.service'
+import { Router } from '@angular/router/src/router';
 
 @Component({
   selector: 'app-offres-entreprise',
@@ -14,7 +15,11 @@ export class OffresEntrepriseComponent implements OnInit {
   items : any[] = [];
   check: boolean =false ;
 
-  constructor(private route: ActivatedRoute, private myService: MyServiceService) { }
+  constructor(private route: ActivatedRoute, private myService: MyServiceService, private router: Router) { }
+
+  offreProfile(id: number){
+    this.router.navigate(['/components/OffreDetail/', id]);
+  } 
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe((params: any) => {
@@ -24,7 +29,6 @@ export class OffresEntrepriseComponent implements OnInit {
           data => {
             const myArray = [];
             for (let key in data) {
-              console.log(data[key])
                 myArray.push(data[key]);
             }
             this. check = true;
@@ -35,6 +39,5 @@ export class OffresEntrepriseComponent implements OnInit {
     }
                 //this.items = data;
                 //this. check = true;
-                //console.log(this.items)
 
 }

@@ -11,20 +11,33 @@ export class MyServiceService {
   email: string;
   options:{headers:Headers} = {headers : null};
   
+  
+
 	constructor(public http:Http) {
     this.domain = "http://127.0.0.1:8000"
     this.url = this.domain+"/scrumboard";
     this.options = new RequestOptions({ headers: new Headers() });
-    this.options.headers = new Headers();
-    this.options.headers.append('Content-Type', 'application/json');
+    this.options.headers = new Headers({ 
+      'Content-Type': 'application/json'
+     });
     this.setAuth();
 	}
 
+  public getCookie(name) {
+    let value = "; " + document.cookie;
+    let parts = value.split("; " + name + "=");
+    if (parts.length == 2)
+      return parts.pop().split(";").shift();
+  }
 
   public PutOffres(user: any): any {
     const body = JSON.stringify(user);
-    return this.http.put(this.url+"/Offres/"+this.userid, body, this.options)
-    .map((data: Response) => data.json())
+    console.log("okay")
+    return this.http.put(this.url+"/Offres/1/", body, new RequestOptions({ headers: new Headers({ 
+      'Content-Type': 'application/json', 
+      'X-CSRFToken': this.getCookie('csrftoken')
+     }) }))
+    .map((data: Response) => {console.log(data)})
   }
   
     public getAll(): any {
@@ -37,10 +50,7 @@ export class MyServiceService {
         .map((data: Response) => data.json());
   }
 
-  // ija facebook okay
-
   public getAllSecteurs(): any {
-    console.log(this.options);
     return this.http.get(this.url+"/Secteurs/",this.options)
       .map((data: Response) => data.json());
 }
@@ -49,6 +59,17 @@ public getAllNature(): any {
   return this.http.get(this.url+"/Nature/",this.options)
     .map((data: Response) => data.json());
 }
+
+public getAllNiveau(): any {
+  return this.http.get(this.url+"/Niveau/",this.options)
+    .map((data: Response) => data.json());
+}
+
+public getAllDuree(): any {
+  return this.http.get(this.url+"/Duree/",this.options)
+    .map((data: Response) => data.json());
+}
+
 
 public getAllVille(): any {
   return this.http.get(this.url+"/Ville/",this.options)
@@ -60,8 +81,10 @@ public getAllEmplacements(): any {
     .map((data: Response) => data.json());
 }
 public getOffreById(id: number): any{
+  console.log("Pre service ")
   return this.http.get(this.url+"/OffresByRecruteur/"+id, this.options)
-    .map((data: Response) => data.json());
+  .map((data: Response) => data.json()
+);
 }
 
 public offreById(id: number): any{
@@ -77,8 +100,17 @@ public getOffreBySecteur(secteur: string): any{
 }
    
 public getOffreByNature(nature: string): any{
-  //console.log(this.token)
   return this.http.get(this.url+"/OffresByNature/"+nature,this.options)
+    .map((data: Response) => data.json());
+}
+
+public getOffreByDuree(duree: string): any{
+  return this.http.get(this.url+"/OffresByDuree/"+duree,this.options)
+    .map((data: Response) => data.json());
+}
+
+public getOffreByNiveau(niveau: string): any{
+  return this.http.get(this.url+"/OffresByNiveau/"+niveau,this.options)
     .map((data: Response) => data.json());
 }
 
@@ -94,7 +126,10 @@ public getRecruteurById(id : Number): any {
 
 public sendDataCandidat(user: any){
   const body = JSON.stringify(user);
-    return this.http.post(this.url+"/Candidats/", body, this.options)
+    return this.http.post(this.url+"/Candidats/", body, new RequestOptions({ headers: new Headers({ 
+      'Content-Type': 'application/json', 
+      'X-CSRFToken': this.getCookie('csrftoken')
+     }) }))
     .map((data: Response) => data.json())
    
   }
@@ -143,16 +178,33 @@ public search(toFind: string){
 
     public sendDataOffres(user: any){
       const body = JSON.stringify(user);
-      console.log(body)
       return this.http.post(this.url+"/Offres/", body, this.options)
         .map((data: Response) => data.json())
 
+    }
+
+    public countCandidats(){
+      return this.http.get(this.url+"/CountC/",this.options)
+          .map((data: Response) => data.json())
+    }
+
+    public countRecruteurs(){
+      return this.http.get(this.url+"/CountR/",this.options)
+          .map((data: Response) => data.json())
+    }
+
+    public countOffres(){
+      return this.http.get(this.url+"/CountO/",this.options)
+          .map((data: Response) => data.json())
     }
     
     public login(user: any){
       const body = JSON.stringify(user);
       
-      return this.http.post(this.domain+'/api-token-auth/', body, this.options)
+      return this.http.post(this.domain+'/api-token-auth/', body, new RequestOptions({ headers: new Headers({ 
+        'Content-Type': 'application/json', 
+        'X-CSRFToken': this.getCookie('csrftoken')
+       }) }))
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
@@ -162,7 +214,6 @@ public search(toFind: string){
                     // set token property
                     this.setToken(token);
                     this.setUser(user, email);
-                   // console.log(token);
                     this.setAuth();
                    // console.log(this.options.headers)
                     // store username and jwt token in local storage to keep user logged in between page refreshes

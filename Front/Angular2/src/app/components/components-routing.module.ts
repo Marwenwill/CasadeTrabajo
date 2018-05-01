@@ -20,6 +20,8 @@ import { UserComponent } from './user.component'
 import { EntrepriseProfileComponent } from './entreprise-profile.component'
 import { OffreDetailComponent } from 'app/components/offre-detail.component';
 import { SearchComponent } from 'app/components/search.component';
+import { OffreDureeComponent } from 'app/components/offre-duree.component';
+import { OffreNiveauComponent } from 'app/components/offre-niveau.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,20 @@ const routes: Routes = [
         component: EntrepriseProfileComponent,
         data: {
           title: 'Entreprise Detail'
+        }
+      },
+      {
+        path: 'niveau/:niveau',
+        component: OffreNiveauComponent,
+        data: {
+          title: 'Niveau'
+        }
+      },
+      {
+        path: 'duree/:duree',
+        component: OffreDureeComponent,
+        data: {
+          title: 'Duree'
         }
       },
       {

@@ -463,6 +463,9 @@ export class DashboardComponent implements OnInit {
   public sparklineChartType: string = 'line';
 
   items: any[] = [];
+  itemsCandidat: any[] = [];
+  itemsRecruteur: any[] = [];
+  itemsOffre: any[] = [];
   private offreIndex: number = 1;
   constructor(private myService:MyServiceService, private router: Router) {
 
@@ -483,6 +486,39 @@ export class DashboardComponent implements OnInit {
               myArray.push(data[key]);
           }
           this.items = myArray;
+        }
+      );
+
+      this.myService.countOffres()
+      .subscribe(
+        data => {
+          const myArray = [];
+          for (let key in data) {
+              myArray.push(data[key]);
+          }
+          this.itemsOffre = myArray;
+        }
+      );
+
+      this.myService.countCandidats()
+      .subscribe(
+        data => {
+          const myArray = [];
+          for (let key in data) {
+              myArray.push(data[key]);
+          }
+          this.itemsCandidat = myArray;
+        }
+      );
+
+      this.myService.countRecruteurs()
+      .subscribe(
+        data => {
+          const myArray = [];
+          for (let key in data) {
+              myArray.push(data[key]);
+          }
+          this.itemsRecruteur = myArray;
         }
       );
       

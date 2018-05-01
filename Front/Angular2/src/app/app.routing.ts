@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+import { MesoffresComponent } from 'app/components/mesoffres.component';
 
 export const routes: Routes = [
   {

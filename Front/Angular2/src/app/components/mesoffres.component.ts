@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MyServiceService } from '../my-service.service'
 import { Subscription } from 'rxjs';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Console } from '@angular/core/src/console';
 @Component({
   selector: 'app-mesoffres',
   templateUrl: './mesoffres.component.html',
@@ -13,23 +14,38 @@ export class MesoffresComponent implements OnInit {
   private subscription: Subscription;
   private offreIndex: number;
   items : any[] = [];
-  check: boolean =false ;
+  saveSuccess: boolean =false ;
   
-  constructor(private route: ActivatedRoute, private myService: MyServiceService) { }
-
-  ngOnInit() {
-
-    this.subscription = this.route.params.subscribe((params: any) => {
-
+  constructor(private route: ActivatedRoute, private myService: MyServiceService, private router: Router) {
+    route.params.subscribe(val => {
+      console.log("Pre component")
         this.myService.getOffreById(1) //parseInt(this.myService.userid)
         .subscribe(
           data => {
             const myArray = [];
             for (let key in data) {
-              console.log(data[key])
                 myArray.push(data[key]);
+                console.log("Post component")
             }
-            this. check = true;
+            
+            this.items = myArray;
+            }
+        );
+    });
+   }
+
+  ngOnInit() {
+
+    this.subscription = this.route.params.subscribe((params: any) => {
+      console.log("Pre component")
+        this.myService.getOffreById(1) //parseInt(this.myService.userid)
+        .subscribe(
+          data => {
+            const myArray = [];
+            for (let key in data) {
+                myArray.push(data[key]);
+                console.log("Post component")
+            }
             this.items = myArray;
             }
         );
@@ -38,15 +54,21 @@ export class MesoffresComponent implements OnInit {
 
 
     public onSubmit(title: string, nature: String, duree: String, niveau: String, description: String, salaire: String,  secteur: String) {
-      console.log(title, nature, duree+" userID"+ this.myService.userid, description)
+      console.log(title, nature, duree, niveau, description, salaire, secteur)
   
-      this.myService.PutOffres({ title: title, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, secteur:secteur, id:this.myService.userid})
+      this.myService.PutOffres({id:1, title: title, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, secteur:secteur})
         .subscribe(
-          data => console.log(data)
+          data => {
+            this.ngOnInit()
+            this. saveSuccess = true;
+            setInterval(() => {
+              this.saveSuccess = false
+              this.ngOnInit()
+          }, 4000);
+          }
         );
     }
                 //this.items = data;
                 //this. check = true;
-                //console.log(this.items)
 
 }

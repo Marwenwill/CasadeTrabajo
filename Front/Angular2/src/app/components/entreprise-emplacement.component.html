@@ -15,7 +15,16 @@
           </div>
           <hr>
           <div class="card-block">
-              <img src="{{item.logo}}" alt="USA" style="height:40px;" src="{{item.logo}}">
+                <div class="row">
+                        <div class="col-md-9">
+                                <img src="{{item.logo}}" alt="USA" style="height:40px;" src="{{item.logo}}">
+                        </div>
+                        <div class="col-md-3">
+                                <button type="button" (click)="entrepriseProfile(item.recruteur_id)" class="btn btn-outline-primary btn-sm">Détails</button>
+                            </div>
+                      </div>
+              
+              
           </div>
           <hr>
 

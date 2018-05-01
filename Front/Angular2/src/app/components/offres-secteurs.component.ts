@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { MyServiceService } from '../my-service.service'
@@ -15,7 +15,11 @@ export class OffresSecteursComponent implements OnInit {
   check: boolean =false ;
   object: Object = {}
 
-  constructor(private route: ActivatedRoute, private myService: MyServiceService) { }
+  constructor(private route: ActivatedRoute, private myService: MyServiceService, private router: Router) { }
+
+  offreProfile(id: number){
+    this.router.navigate(['/components/OffreDetail/', id]);
+  } 
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe((params: any) => {
@@ -25,7 +29,6 @@ export class OffresSecteursComponent implements OnInit {
         data => {
           const myArray = [];
             for (let key in data) {
-              console.log(data[key])
                 myArray.push(data[key]);
             }
             this. check = true;

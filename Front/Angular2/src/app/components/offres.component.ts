@@ -27,7 +27,6 @@ export class OffresComponent implements OnInit {
           const myArray = [];
           for (let key in data) {
               myArray.push(data[key]);
-              console.log(data[key]);
           }
           this.items = myArray;
         }

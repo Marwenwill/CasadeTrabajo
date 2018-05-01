@@ -4,17 +4,13 @@
         <div class="col-md-6">
           <div class="card mx-2">
             <div class="card-block p-2">
-              <h1>Register</h1>
-              <p class="text-muted">Create your account</p>
+              <h1>S'inscrire</h1>
+              <p class="text-muted">Créer votre profil Recruteur</p>
               <div class="input-group mb-1">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
-                <input type="text" class="form-control" placeholder="Name" name="name" #name>
+                <input type="text" class="form-control" placeholder="username" name="username" #username>
               </div>
   
-              <div class="input-group mb-1">
-                <span class="input-group-addon"><i class="icon-user"></i></span>
-                <input type="text" class="form-control" placeholder="Last name" name="lastName" #lastName>
-              </div>
               
               <div class="input-group mb-1">
                 <span class="input-group-addon">@</span>
@@ -35,17 +31,17 @@
   
               <div class="input-group mb-2">
                 <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <input type="password" class="form-control" placeholder="Repeat password" name="confirmation">
+                <input type="password" class="form-control" placeholder="Répeter password" name="confirmation">
               </div>
               
               <div class="input-group mb-1">
-                <span class="input-group-addon"><i class="icon-phone"></i></span>
-                <input type="text" class="form-control" placeholder="Entreprise name" name="entrepriseName" #entrepriseName>
+                <span class="input-group-addon"><i class="icon-home"></i></span>
+                <input type="text" class="form-control" placeholder="Nom Entreprise" name="entrepriseName" #entrepriseName>
               </div>
 
               <div class="input-group mb-1">
-                <span class="input-group-addon"><i class="icon-phone"></i></span>
-                <input type="text" class="form-control" placeholder="WebSite" name="webSite" #webSite>
+                <span class="input-group-addon"><i class="icon-globe"></i></span>
+                <input type="text" class="form-control" placeholder="Site web" name="webSite" #webSite>
               </div>
 
               <div class="input-group mb-1">
@@ -80,21 +76,21 @@
               </div>
 
               <div class="input-group mb-1">
-                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <span class="input-group-addon"><i class="fa fa-image"></i></span>
                 <input type="file" class="form-control" placeholder="logo" name="logo" #logo>
               </div>
 
               <div class="input-group mb-1">
-                <span class="input-group-addon"><i class="icon-phone"></i></span>
+                <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>
                 <input type="text" class="form-control" placeholder="Description" name="description" #description>
               </div>
 
               <div class="input-group mb-1">
-                <span class="input-group-addon"><i class="icon-phone"></i></span>
-                <input type="text" class="form-control" placeholder="Number of Employees" name="nbEmployee" #nbEmployee>
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre d'employées" name="nbEmployee" #nbEmployee>
               </div>
               
-              <button type="submit" (click)="onSubmit(name.value, lastName.value, email.value, tel.value, password.value, entrepriseName.value, webSite.value, emplacement.value, logo.value, description.value, nbEmployee.value)" class="btn btn-block btn-success">Create Account</button>
+              <button type="submit" (click)="onSubmit(username.value, email.value, tel.value, password.value, entrepriseName.value, webSite.value, emplacement.value, logo.value, description.value, nbEmployee.value)" class="btn btn-block btn-success">Créer Compte</button>
             </div>
             <div class="card-footer p-2">
               <div class="row">
