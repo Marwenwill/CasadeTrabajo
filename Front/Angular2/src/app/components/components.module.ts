@@ -32,6 +32,7 @@ import { OffreDetailComponent } from './offre-detail.component';
 import { SearchComponent } from './search.component';
 import { OffreDureeComponent } from './offre-duree.component';
 import { OffreNiveauComponent } from './offre-niveau.component';
+import { ModalInfoComponent } from './modal-info.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { OffreNiveauComponent } from './offre-niveau.component';
     OffreDetailComponent,
     SearchComponent,
     OffreDureeComponent,
-    OffreNiveauComponent 
+    OffreNiveauComponent,
+    ModalInfoComponent 
   ]
 })
 export class ComponentsModule { }

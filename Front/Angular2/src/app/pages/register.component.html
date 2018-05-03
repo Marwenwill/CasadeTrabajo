@@ -39,12 +39,12 @@
             </div>
             
             <div class="input-group mb-2">
-              <span class="input-group-addon"><i class="fa fa-calendar fa-lg mt-2"></i></span>
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
               <input type="date" formControlName="birthDate" class="form-control" placeholder="Date de naissance" id="birthDate" #birthDate>
             </div>
 
             <div class="input-group mb-1">
-              <span class="input-group-addon"><i class="fa fa-home fa-lg mt-2"></i></span>
+              <span class="input-group-addon"><i class="fa fa-home"></i></span>
               <select formControlName="gouvernorate" id="select" id="gouvernorate" class="form-control" size="1" #gouvernorate>
                 <option value="Governorate">Governorate</option>
                 <option value="Ariana">Ariana</option>
@@ -75,6 +75,11 @@
             </div>
             
 
+            <div class="input-group mb-2">
+              <span class="input-group-addon"><i class="fa fa-file"></i></span>
+              <input type="file" name="cv" id="cv" #cv> 
+            </div>
+
             <div class="form-group row">
               <div class="col-md-9">
                 <label class="radio-inline" for="inline-radio1">
@@ -87,7 +92,7 @@
               </div>
             </div>
 
-            <button type="submit" (click)="onSubmit(username.value, email.value, tel.value, password.value, civility.value, birthDate.value, gouvernorate.value)" class="btn btn-block btn-success">Créer Compte</button>
+            <button type="submit" (click)="onSubmit(username.value, email.value, tel.value, password.value, civility.value, birthDate.value, gouvernorate.value, cv.value)" class="btn btn-block btn-success">Créer Compte</button>
             </form>
           </div>
           <div class="card-footer p-2">

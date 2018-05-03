@@ -40,6 +40,17 @@ export class MyServiceService {
     .map((data: Response) => {console.log(data)})
   }
   
+  public PutCandidatProfile(candidat: any): any {
+    const body = JSON.stringify(candidat);
+    console.log("okay "+this.userid)
+    return this.http.put(this.url+"/Candidats/"+this.userid+"/", body, new RequestOptions({ headers: new Headers({ 
+      'Content-Type': 'application/json', 
+      'X-CSRFToken': this.getCookie('csrftoken')
+     }) }))
+    .map((data: Response) => {console.log(data)})
+  }
+  
+  
     public getAll(): any {
         return this.http.get(this.url+"/Recruteurs/",this.options)
           .map((data: Response) => data.json());
@@ -82,13 +93,14 @@ public getAllEmplacements(): any {
 }
 public getOffreById(id: number): any{
   console.log("Pre service ")
-  return this.http.get(this.url+"/OffresByRecruteur/"+id, this.options)
+  return this.http.get(this.url+"/OffresByRecruteur/"+id+"/", this.options)
   .map((data: Response) => data.json()
 );
 }
 
 public offreById(id: number): any{
-  return this.http.get(this.url+"/Offres/"+id, this.options)
+  console.log("asba")
+  return this.http.get(this.url+"/Offres/"+id+"/", this.options)
     .map((data: Response) => data.json());
 }
 
@@ -124,6 +136,12 @@ public getRecruteurById(id : Number): any {
     .map((data: Response) => data.json());
 }
 
+public getCandidatById(): any {
+  console.log("this is userid "+ this.userid)
+  return this.http.get(this.url+"/Candidats/"+this.userid+"/",this.options)
+    .map((data: Response) => data.json());
+}
+
 public sendDataCandidat(user: any){
   const body = JSON.stringify(user);
     return this.http.post(this.url+"/Candidats/", body, new RequestOptions({ headers: new Headers({ 
@@ -133,6 +151,16 @@ public sendDataCandidat(user: any){
     .map((data: Response) => data.json())
    
   }
+
+  public addCandidature(candidatures: any){
+    console.log("Pre Service")
+    const body = JSON.stringify(candidatures);
+      return this.http.post(this.url+"/Candidatures/", body, new RequestOptions({ headers: new Headers({ 
+        'Content-Type': 'application/json', 
+        'X-CSRFToken': this.getCookie('csrftoken')
+       }) }))
+      .map((data: Response) =>console.log(data))    
+    }
 
   private setToken(token) { 
     this.token = token;

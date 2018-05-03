@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MyServiceService } from '../my-service.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: 'register.component.html'
@@ -10,13 +11,14 @@ export class RegisterComponent implements OnInit {
     myForm: FormGroup;
     error = false;
     errorMessage = '';
-  constructor(private myService:MyServiceService, private fb: FormBuilder) {
+  constructor(private myService:MyServiceService, private fb: FormBuilder, private router: Router) {
 
   }
-  public onSubmit(username: string, email: string, tel: string, password: string, civility: string, birthDate: Date, gouvernorate: string) {
-    this.myService.sendDataCandidat({ username: username, email: email, tel: tel, password: password, civility: civility, birthDate: birthDate, gouvernorate: gouvernorate})
+  public onSubmit(username: string, email: string, tel: string, password: string, civility: string, birthDate: Date, gouvernorate: string, cv:string) {
+    console.log(cv)
+    this.myService.sendDataCandidat({ username: username, email: email, tel: tel, password: password, civility: civility, birthDate: birthDate, gouvernorate: gouvernorate, cv:cv})
       .subscribe(
-        data => console.log("sibon"+data),
+        data => this.router.navigate(['/pages/login']),
         (error) => {console.log("lele"+error)}
       );
   }
