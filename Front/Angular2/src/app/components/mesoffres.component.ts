@@ -34,6 +34,10 @@ export class MesoffresComponent implements OnInit {
     });
    }
 
+   candidatureParOffre(id: number){
+    this.router.navigate(['/components/candidature', id])
+   }
+
   ngOnInit() {
 
     this.subscription = this.route.params.subscribe((params: any) => {
@@ -53,10 +57,10 @@ export class MesoffresComponent implements OnInit {
     }
 
 
-    public onSubmit(title: string, nature: String, duree: String, niveau: String, description: String, salaire: String,  secteur: String) {
+    public onSubmit(id: number, title: string, nature: String, duree: String, niveau: String, description: String, salaire: String,  secteur: String) {
       console.log(title, nature, duree, niveau, description, salaire, secteur)
   
-      this.myService.PutOffres({id:1, title: title, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, secteur:secteur})
+      this.myService.PutOffres(id,{id:id, title: title, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, secteur:secteur})
         .subscribe(
           data => {
             this.ngOnInit()

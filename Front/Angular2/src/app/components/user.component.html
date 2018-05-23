@@ -14,7 +14,7 @@
                                 <div class="col-md-10">
                                     <div class="form-group">
                                         <p style="text-align: justify; font-family: 'Comfortaa', cursive;"><u><b>Description:</b></u> </p>
-                                        <p>{{items.cvTxt}}</p>
+                                        <pre>{{items.cvTxt}}</pre>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div> 
@@ -119,13 +119,13 @@
         </select>
       </div>
       <div class="input-group mb-2">
-        <textarea class="form-control" rows="15" id="comment" value="{{items.cvTxt}}"></textarea>
+        <textarea class="form-control" rows="15" id="cvTxt" #cvTxt value="{{items.cvTxt}}"></textarea>
     </div>
 
     </div>
     <div class="app-modal-footer">
         <button type="button" class="btn btn-default" (click)="modalInfo.hide()">Annuler</button>
-        <button type="button" (click)="postProfile(items.username, items.email, items.tel, items.civility, items.birthDate, items.gouvernorate, items.cvTxt)" class="btn btn-primary">Modifier</button>
+        <button type="submit" (click)="postProfile(username.value, email.value, tel.value, items.civility, birthDate.value, gouvernorate.value, cvTxt.value, items.password, items.cv)" class="btn btn-primary">Modifier</button>
       </div>
       
   </app-modal-info>

@@ -25,7 +25,7 @@ export class LoginComponent  implements OnInit {
         data =>  {
           console.log(data)
           this.router.navigate(['dashboard'])},
-          (error) => {this.errorMsg = 'Failed to login';}
+          (error) => {this.errorMsg = 'Échec de la connexion';}
       );
     }
 

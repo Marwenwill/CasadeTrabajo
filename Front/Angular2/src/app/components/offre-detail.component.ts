@@ -47,10 +47,15 @@ export class OffreDetailComponent implements OnInit {
 
   postCandidature(idRecruteur: number, idOffre: number){
     console.log("Pre component")
-    this.myService.addCandidature({dateAjout:this.datet, score:300, idCandidat:1, idOffre: 1})
+    this.myService.addCandidature({dateAjout:this.datet, score:0, idCandidat:this.myService.userid, idOffre: idOffre, idRecruteur: idRecruteur})
     .subscribe(
       data => console.log(data)
     );
+    setTimeout(() =>{this.myService.score(idOffre, this.myService.userid)
+      .subscribe(
+        data => console.log("dkhalna lel data "+data)
+      );}, 2000);
+    
   }
 
 }

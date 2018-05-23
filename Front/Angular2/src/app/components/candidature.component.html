@@ -1,0 +1,90 @@
+<!--/.row-->
+<h3 style="text-align: center; font-family: 'Comfortaa', cursive;">Liste des candidats pour l'offre Ingénieur BI Senior!</h3>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> 
+      </div>
+      <div class="card-block">
+            <div *ngIf="saveSuccess" class="alert alert-success" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>Success!</strong> You have been signed in successfully!
+            </div>
+            
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <th>Rang</th>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Tel</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items; let i = index">
+              <td>{{item.score}}</td>
+              <td>{{item.candidat.username}}</td>
+              <td>{{item.candidat.email}}</td>
+              <td>{{item.candidat.tel}}</td>
+              <td>
+                <i class="fa fa-envelope" (click)="modalEdit.show()"></i>&nbsp;<i class="fa fa-user"></i>
+              </td>
+              
+              <app-modal-edit #modalEdit>
+                <div  class="app-modal-header">
+                  Envoi Email
+                </div>
+                
+                <div class="app-modal-body">
+                  <div class="input-group mb-1">
+                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                    <input type="text" class="form-control" placeholder="Email" id="email" #email value="{{item.candidat.email}}">
+                  </div>
+              
+                  <div class="input-group mb-1">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="text" class="form-control" placeholder="Object" id="object" #object value="Convocation Entretien">
+                  </div>
+                  
+                    
+                      
+                        
+                          <div class="input-group mb-1">
+                              <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                              <textarea class="form-control" placeholder="Description" rows="5" id="description" #description> Bonjour {{item.candidat.username}} Merci d'avoir candidaté pour un poste de {{item.offre.title}} chez {{item.offre.entrepriseName.entrepriseName}}. Je suis ravis de vous annoncer que votre candidature a été retenue par notre Département de recrutement.  </textarea>
+                            </div> 
+                            
+                </div>
+                <div class="app-modal-footer">
+                  <button type="button" class="btn btn-default" (click)="modalEdit.hide()">Fermer</button>
+                  <button type="submit" (click)="sendEmail(email.value, object.value, description.value, item.candidat.id)" class="btn btn-primary">Envoyer</button>
+                  </div>
+                  
+              </app-modal-edit>
+
+            </tr>
+
+            
+
+          </tbody>
+        </table>
+        <nav>
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

@@ -62,7 +62,7 @@ export class FullLayoutComponent implements OnInit{
       console.log("Not logged in")
     }
 
-    this.myService.sendDataOffres({ owner:1, title: title, datet: this.datet, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, secteur:secteur, id:6})
+    this.myService.sendDataOffres({ title: title, dateAjout: this.datet, nature: nature, duree: duree, niveau: niveau, description: description, salaire: salaire, secteur:secteur, idRecruteur:this.myService.userid})
       .subscribe(
         data => console.log(data)
       );
@@ -82,7 +82,7 @@ export class FullLayoutComponent implements OnInit{
 
   selectOffresById(){
     console.log(this.myService.userid)
-    this.router.navigate(['/components/mesoffres', 1])
+    this.router.navigate(['/components/mesoffres', this.myService.userid])
     }  
 
   selectByTypeEmploi(nature: string){
@@ -182,6 +182,6 @@ let currUser = JSON.parse(localStorage.getItem('currentUser'));
 }
   public logout() {
     this.myService.logout();
-    this.router.navigate(['/dashboard']);//pages/login
+    this.router.navigate(['/pages/login']);//pages/login
   }
 }

@@ -11,6 +11,8 @@ export class RegisterComponent implements OnInit {
     myForm: FormGroup;
     error = false;
     errorMessage = '';
+    again: boolean = true
+    saveSuccess: boolean =false ;
   constructor(private myService:MyServiceService, private fb: FormBuilder, private router: Router) {
 
   }
@@ -18,9 +20,20 @@ export class RegisterComponent implements OnInit {
     console.log(cv)
     this.myService.sendDataCandidat({ username: username, email: email, tel: tel, password: password, civility: civility, birthDate: birthDate, gouvernorate: gouvernorate, cv:cv})
       .subscribe(
-        data => this.router.navigate(['/pages/login']),
+         
+        data =>{console.log("sent")
+        this.saveSuccess = true;},
         (error) => {console.log("lele"+error)}
       );
+      
+      setTimeout(() =>{this.myService.getCV(username)
+        .subscribe(
+            this.again = false,
+            data =>{console.log("okok")}
+        );}, 2000);
+      
+    
+      
   }
 
   onSignup() {

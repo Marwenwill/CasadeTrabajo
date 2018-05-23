@@ -27,6 +27,9 @@ urlpatterns = [
     url(r'api-token-refresh/', refresh_jwt_token),
     url(r'^users/$', views.UserList.as_view()),
     url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
+    url(r'^user/Candidats/pdf', views.convertPDF),
+    url(r'^user/Candidats/score', views.storeScore),
+    url(r'^sendEmail', views.sendEmail)
 ]
 
 

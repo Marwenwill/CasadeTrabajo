@@ -492,33 +492,21 @@ export class DashboardComponent implements OnInit {
       this.myService.countOffres()
       .subscribe(
         data => {
-          const myArray = [];
-          for (let key in data) {
-              myArray.push(data[key]);
-          }
-          this.itemsOffre = myArray;
+          this.itemsOffre = data[1];
         }
       );
 
       this.myService.countCandidats()
       .subscribe(
         data => {
-          const myArray = [];
-          for (let key in data) {
-              myArray.push(data[key]);
-          }
-          this.itemsCandidat = myArray;
+          this.itemsCandidat = data[1];
         }
       );
 
       this.myService.countRecruteurs()
       .subscribe(
         data => {
-          const myArray = [];
-          for (let key in data) {
-              myArray.push(data[key]);
-          }
-          this.itemsRecruteur = myArray;
+          this.itemsRecruteur = data[1];
         }
       );
       

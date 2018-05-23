@@ -32,7 +32,7 @@
               <td>{{item.description}}</td>
               <td>{{item.salaire}} DT</td>
               <td>
-                <i class="fa fa-edit" (click)="modalEdit.show()"></i>&nbsp;<i class="fa fa-trash"></i>
+                <i class="fa fa-edit" (click)="modalEdit.show()"></i>&nbsp;<i class="fa fa-trash"></i>&nbsp;<i class="fa fa-eye" (click)="candidatureParOffre(item.id)"></i>
               </td>
               <app-modal-edit #modalEdit>
                 <div  class="app-modal-header">
@@ -119,7 +119,7 @@
                 </div>
                 <div class="app-modal-footer">
                   <button type="button" class="btn btn-default" (click)="modalEdit.hide()">Close</button>
-                  <button type="submit" (click)="onSubmit(title.value, nature.value, duree.value, niveau.value, description.value, salaire.value, secteur.value)" class="btn btn-primary">Save changes</button>
+                  <button type="submit" (click)="onSubmit(item.id, title.value, nature.value, duree.value, niveau.value, description.value, salaire.value, secteur.value)" class="btn btn-primary">Save changes</button>
                   </div>
                   
               </app-modal-edit>

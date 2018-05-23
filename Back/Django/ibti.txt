@@ -1,0 +1,128 @@
+Marouane Chouri
+
+-
+
+Education
+2016–présent
+
+Diplôme d'ingénieur en informatique Ecole Nationale des sciences de l’informatique (ENSI)
+
+• 2éme année Ingénieur en informatique - spécialité génie logiciel.
+• 1ère année Ingénieur en informatique (30/180).
+
+2013–2016
+
+Licence fondamentale en informatique appliquée à la gestion
+Gestion (ISG)
+
+Institut Supérieur de
+
+• L3 en informatique appliquée à la gestion - Majeur promotion (1/78).
+• L2 en informatique appliquée à la gestion - Majeur promotion (1/116).
+• L1 en informatique appliquée à la gestion - Majeur promotion (1/187).
+
+Informations
+personnelles
+23 ans
+Franco-Tunisien
+C.I.N: 12804369
+Contact
+(+216) 99 620 288
+chouri.marwen@nateg.org
+Sousse - Tunisie
+Route Touristique
+Chatt-Meriam
+Langues
+Arabe (Langue maternelle),
+Français (Techniques de
+lecture et d’écriture niveau
+avancé, niveau oral avancé ),
+Anglais (Techniques de
+lecture et d’écriture niveau
+avancé, niveau oral bon).
+Langages de
+programmation
+J2EE, Python, Java, C, C++,
+PHP, Typescript, JavaScript,
+HTML5, CSS3, Assembler,
+Bash Scripting, Lua, VB.NET,
+Matlab, XML, PL/SQL.
+Technologies diverses
+Angular2+, Django, REST
+Framework, Hibernate,
+Spring, Bootstrap, Angular
+material, Symfony,
+OpenSource,
+/Ubuntu/Debian/Linux, NLTK
+(Natural Language Toolkit),
+MySQL/SQLite/MongoDB/Oracle
+DataBases, Latex, SFML/SDL.
+
+Expérience
+Jan 2018–présent Système de recommandation de CV
+
+Cadre: Projet de conception et de développement.
+Description: Système pour aider le département des ressources humaines à
+présélectionner facilement le candidat en fonction de la politique de classe-
+ment des CV en utilisant l’analyse cv automatisée.
+Technologies: Angular2, Python, Django, Django REST Framework, SQLite, sci-
+kit learn NLTK, Sublime Text 3 et Visual Studio Code.
+
+ENSI
+
+Sept, Oct 2017
+
+Jan, May 2016
+
+July 2015
+
+Mars 2015
+
+Jeu Snake 3D
+Cadre: Projet d’été.
+Description: Conception et développement de jeu Snake 3D.
+Technologies: C/C++, SFML et Codeblocks.
+
+ENSI
+
+Systéme de gestion de maintenance assistée par ordinateur
+Cadre: Projet de ﬁn d’étude.
+Description: Il s’agit d’un systéme qui aide les techniciens de Tunisie Telecom
+à bien gérer les pannes en fournissant tout les détails concernant cette panne
+avec tout un systéme de reporting et de statistique.
+Technologies: J2EE, Spring, JSP, HTML/CSS, Bootstrap, Glassﬁsh et Netbeans.
+
+Tunisie Telecom
+
+Maintenance et Rajout des fonctionnalités
+Cadre: Stage d’été.
+Description: Ajout de plusieurs fonctionnalités en J2EE.
+
+Valomnia sousse
+
+Développement d'un site web dynamique
+Cadre: Projet de ﬁn d’année.
+Description: Développement d’un site Web dynamique pour un magasin de ven-
+te des vêtements.
+Technologies: Php et Sublime Text 2.
+
+ISG
+
+Vie associative
+
+• Chef d’équipe et coordinateur pour 800 personnes avec NATEG.
+• Graphiste à l’ENSI Robotics Club.
+• Formateur et ecrivain des CTF Challenges au Club de sécurité informatique de
+
+l’ENSI.
+
+• Membre actif à IEEE, Opensource et Microsoft Clubs de l’ENSI.
+• Peer Project Leader at ENSI Junior Enterprise.
+• Organisateur NATEG DAYS 2017 et 2018, Forum ENSI 2017 et 2018, Tunisia
+
+youtubers day, Hackzone 2017 et 2018.
+• Vice Président de l’ISG Sharepoint Club.
+• Chef du département marketing du club ISGs.
+• Organisateur Coding moon challenge v1.0 et v2.0.
+
+

@@ -1,4 +1,4 @@
-from .api import CandidatureViewSet, CountCViewSet, CountRViewSet, CountOViewSet, CandidatViewSet, RecruteurViewSet, OffreViewSet, SecteurViewSet, NatureViewSet, OffreSecteurViewSet, OffreRecruteurViewSet, OffreNatureViewSet, VilleViewSet, EmplacementViewSet, EntrepriseLocationViewSet, SearchViewSet, OffreDureeViewSet, DureeViewSet, OffreNiveauViewSet, NiveauViewSet
+from .api import sendEmailViewSet, CandidatureByIdRecruteurViewSet, CandidatureViewSet, CountCViewSet, CountRViewSet, CountOViewSet, CandidatViewSet, RecruteurViewSet, OffreViewSet, SecteurViewSet, NatureViewSet, OffreSecteurViewSet, OffreRecruteurViewSet, OffreNatureViewSet, VilleViewSet, EmplacementViewSet, EntrepriseLocationViewSet, SearchViewSet, OffreDureeViewSet, DureeViewSet, OffreNiveauViewSet, NiveauViewSet
 
 from rest_framework.routers import DefaultRouter
 
@@ -8,6 +8,7 @@ router.register(r'Candidats', CandidatViewSet)
 router.register(r'Recruteurs', RecruteurViewSet)
 router.register(r'Offres', OffreViewSet)
 router.register(r'Candidatures', CandidatureViewSet)
+router.register(r'CandidaturesByIdRecruteur/(?P<idRecruteur_id>\d+)/(?P<idOffre_id>\d+)', CandidatureByIdRecruteurViewSet)
 router.register(r'OffresByRecruteur/(?P<idRecruteur_id>\d+)', OffreRecruteurViewSet)
 router.register(r'OffresBySecteur/(?P<secteur>[ \w]+)', OffreSecteurViewSet, base_name='Secteurs')
 router.register(r'OffresByNature/(?P<nature>[ \w]+)', OffreNatureViewSet, base_name='Natures')

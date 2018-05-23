@@ -10,8 +10,7 @@ class Candidat(models.Model):
 	civility = models.CharField(max_length=50)
 	birthDate = models.DateField(auto_now=False, auto_now_add=False)
 	gouvernorate = models.CharField(max_length=50)
-	cv = models.CharField(max_length=50000)
-	cvTxt = models.CharField(max_length=50000)
+	cv = models.CharField(max_length=50000) 
 	def __str__(self):
 		return "Candidat: {}".format(self.id)
 
@@ -44,7 +43,6 @@ class Offre(models.Model):
 	salaire = models.FloatField(null=True, blank=True)
 	secteur = models.CharField(max_length=50, null=True)
 	idRecruteur = models.ForeignKey(Recruteur,verbose_name = "idRecruteur", on_delete=models.CASCADE, default=None)
-	owner = models.ForeignKey('auth.User', related_name='Offre', on_delete=models.CASCADE, null=False, blank=True)
 	def __str__(self):
 		return "Offre: {}".format(self.id)		
 		
@@ -55,6 +53,7 @@ class Candidature(models.Model):
 	score = models.FloatField(null=True, blank=True)
 	idCandidat = models.ForeignKey(Candidat,verbose_name = "idCandidat", on_delete=models.CASCADE, default=None)
 	idOffre = models.ForeignKey(Offre,verbose_name = "idOffre", on_delete=models.CASCADE, default=None)
+	idRecruteur = models.ForeignKey(Recruteur,verbose_name = "idRecruteur", on_delete=models.CASCADE, default=None)
 	def __str__(self):
 		return "Candidature: {}".format(self.id)			
 

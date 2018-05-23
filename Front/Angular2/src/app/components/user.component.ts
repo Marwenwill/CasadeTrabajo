@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyServiceService } from 'app/my-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +12,7 @@ export class UserComponent implements OnInit {
   check: boolean =false ;
   saveSuccess: boolean =false ;
 
-  constructor(private myService: MyServiceService) { }
+  constructor(private myService: MyServiceService, private router: Router) { }
 
   ngOnInit() {
     this.myService.getCandidatById()
@@ -24,18 +25,14 @@ export class UserComponent implements OnInit {
       );
   }
 
-  public postProfile(username: string, email: String, tel: String, civility: String, birthDate: String, gouvernorate: String,  cvTxt: String) {
+  public postProfile(username: string, email: string, tel: string, civility: string, birthDate: string, gouvernorate: string,  cvTxt: string, password: string, cv: string) {
     //console.log(title, nature, duree, niveau, description, salaire, secteur)
-
-    this.myService.PutCandidatProfile({id:this.myService.userid, username: username, email: email, tel: tel, civility: civility, birthDate: birthDate, gouvernorate: gouvernorate, cvTxt:cvTxt})
+    console.log("Hello "+username, email, tel, cvTxt)
+    this.myService.PutCandidatProfile({id:this.myService.userid, username: username, email: email, tel: tel, password:password, civility: civility, birthDate: birthDate, gouvernorate: gouvernorate, cv:cv, cvTxt:cvTxt })
       .subscribe(
         data => {
-          this.ngOnInit()
-          this. saveSuccess = true;
-          setInterval(() => {
-            this.saveSuccess = false
-            this.ngOnInit()
-        }, 4000);
+          console.log("sibon")
+          this.ngOnInit();
         }
       );
   }

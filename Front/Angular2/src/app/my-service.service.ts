@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/Rx';
+import { error } from 'selenium-webdriver';
 
 @Injectable()
 export class MyServiceService {
@@ -30,10 +31,10 @@ export class MyServiceService {
       return parts.pop().split(";").shift();
   }
 
-  public PutOffres(user: any): any {
+  public PutOffres(id:number, user: any): any {
     const body = JSON.stringify(user);
     console.log("okay")
-    return this.http.put(this.url+"/Offres/1/", body, new RequestOptions({ headers: new Headers({ 
+    return this.http.put(this.url+"/Offres/"+id+"/", body, new RequestOptions({ headers: new Headers({ 
       'Content-Type': 'application/json', 
       'X-CSRFToken': this.getCookie('csrftoken')
      }) }))
@@ -42,12 +43,16 @@ export class MyServiceService {
   
   public PutCandidatProfile(candidat: any): any {
     const body = JSON.stringify(candidat);
+    console.log("body is "+ body)
     console.log("okay "+this.userid)
+    console.log(this.url+"/Candidats/"+this.userid+"/")
     return this.http.put(this.url+"/Candidats/"+this.userid+"/", body, new RequestOptions({ headers: new Headers({ 
       'Content-Type': 'application/json', 
       'X-CSRFToken': this.getCookie('csrftoken')
      }) }))
-    .map((data: Response) => {console.log(data)})
+    .map((data: Response) => {console.log(this.url+"/Candidats/"+this.userid+"/")},
+     (error) => {console.log(error)}
+  )
   }
   
   
@@ -92,14 +97,13 @@ public getAllEmplacements(): any {
     .map((data: Response) => data.json());
 }
 public getOffreById(id: number): any{
-  console.log("Pre service ")
+  console.log("Pre service ok")
   return this.http.get(this.url+"/OffresByRecruteur/"+id+"/", this.options)
   .map((data: Response) => data.json()
 );
 }
 
 public offreById(id: number): any{
-  console.log("asba")
   return this.http.get(this.url+"/Offres/"+id+"/", this.options)
     .map((data: Response) => data.json());
 }
@@ -107,32 +111,32 @@ public offreById(id: number): any{
 
 public getOffreBySecteur(secteur: string): any{
   console.log(this.url+"/OffresBySecteur/"+secteur);
-  return this.http.get(this.url+"/OffresBySecteur/"+secteur,this.options)
+  return this.http.get(this.url+"/OffresBySecteur/"+secteur+"/",this.options)
     .map((data: Response) => data.json());
 }
    
 public getOffreByNature(nature: string): any{
-  return this.http.get(this.url+"/OffresByNature/"+nature,this.options)
+  return this.http.get(this.url+"/OffresByNature/"+nature+"/",this.options)
     .map((data: Response) => data.json());
 }
 
 public getOffreByDuree(duree: string): any{
-  return this.http.get(this.url+"/OffresByDuree/"+duree,this.options)
+  return this.http.get(this.url+"/OffresByDuree/"+duree+"/",this.options)
     .map((data: Response) => data.json());
 }
 
 public getOffreByNiveau(niveau: string): any{
-  return this.http.get(this.url+"/OffresByNiveau/"+niveau,this.options)
+  return this.http.get(this.url+"/OffresByNiveau/"+niveau+"/",this.options)
     .map((data: Response) => data.json());
 }
 
 public getEntrepriseByLocation(emplacement: string): any{
-  return this.http.get(this.url+"/EntrepriseByLocation/"+emplacement,this.options)
+  return this.http.get(this.url+"/EntrepriseByLocation/"+emplacement+"/",this.options)
     .map((data: Response) => data.json());
 }
 
 public getRecruteurById(id : Number): any {
-  return this.http.get(this.url+"/Recruteurs/"+id,this.options)
+  return this.http.get(this.url+"/Recruteurs/"+id+"/",this.options)
     .map((data: Response) => data.json());
 }
 
@@ -142,13 +146,29 @@ public getCandidatById(): any {
     .map((data: Response) => data.json());
 }
 
+public getCV(username: string): any {
+  console.log("haw lenna http://127.0.0.1:8000/user/Candidats/pdf?username="+username);
+  this.http.get("http://127.0.0.1:8000/user/Candidats/pdf?username="+username,this.options)
+    .subscribe((data: Response) => {console.log(data)})
+}
+
+public score(idOffre: number, idCandidat: string): any {
+  console.log("haw lenna http://127.0.0.1:8000/user/Candidats/score?idC="+idCandidat+"&idO="+idOffre);
+  this.http.get("http://127.0.0.1:8000/user/Candidats/score?idC="+idCandidat+"&idO="+idOffre,this.options)
+    .subscribe((data: Response) => {console.log(data)})
+}
+
+
 public sendDataCandidat(user: any){
   const body = JSON.stringify(user);
     return this.http.post(this.url+"/Candidats/", body, new RequestOptions({ headers: new Headers({ 
       'Content-Type': 'application/json', 
-      'X-CSRFToken': this.getCookie('csrftoken')
+      'X-CSRFToken': this.getCookie('csrftoken') 
      }) }))
-    .map((data: Response) => data.json())
+    .map((data: Response) => {
+      data.json()
+      
+    })
    
   }
 
@@ -185,6 +205,12 @@ public sendDataCandidat(user: any){
       this.options.headers.delete('Authorization');
 }
 
+public sendEmail(email: string, object: string, description: string, id:number){
+  console.log(this.url+"/sendEmail/?email="+ email+ "&object="+ object + "&description=" + description + "&id="+ id)
+  return this.http.get("http://127.0.0.1:8000/sendEmail?email="+ email+ "&objectt="+ object + "&description=" + description + "&id="+ id,this.options)
+      .map((data: Response) => data.json())
+}
+
 public getCountById(id: number){
     
     return this.http.get(this.url+"/OffresparEntreprise/count/"+ id,this.options)
@@ -192,13 +218,23 @@ public getCountById(id: number){
 
     }
 
+    public getCandidatureById(id: number){
+      console.log(this.url+"/CandidaturesByIdRecruteur/"+ this.userid+"/"+ id + "/");
+      return this.http.get(this.url+"/CandidaturesByIdRecruteur/"+ this.userid+"/"+ id + "/",this.options)
+        .map((data: Response) => data.json())
+  
+      }    
+
 public search(toFind: string){
-  return this.http.get(this.url+"/Search/"+ toFind,this.options)
+  return this.http.get(this.url+"/Search/"+ toFind+"/",this.options)
       .map((data: Response) => data.json())
 }
     public sendDataRecruteur(user: any){
       const body = JSON.stringify(user);
-      return this.http.post(this.url+"/Recruteurs/", body, this.options)
+      return this.http.post(this.url+"/Recruteurs/", body, new RequestOptions({ headers: new Headers({ 
+        'Content-Type': 'application/json', 
+        'X-CSRFToken': this.getCookie('csrftoken')
+       }) }))
         .map((data: Response) => data.json())
 
     }

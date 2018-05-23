@@ -22,6 +22,7 @@ import { OffreDetailComponent } from 'app/components/offre-detail.component';
 import { SearchComponent } from 'app/components/search.component';
 import { OffreDureeComponent } from 'app/components/offre-duree.component';
 import { OffreNiveauComponent } from 'app/components/offre-niveau.component';
+import { CandidatureComponent } from 'app/components/candidature.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,13 @@ const routes: Routes = [
         component: MesoffresComponent,
         data: {
           title: 'Mes Offres'
+        }
+      },
+      {
+        path: 'candidature/:id',
+        component: CandidatureComponent,
+        data: {
+          title: 'Mes Candidatures'
         }
       },
       {

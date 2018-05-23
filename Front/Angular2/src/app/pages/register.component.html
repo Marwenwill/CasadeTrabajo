@@ -95,6 +95,10 @@
             <button type="submit" (click)="onSubmit(username.value, email.value, tel.value, password.value, civility.value, birthDate.value, gouvernorate.value, cv.value)" class="btn btn-block btn-success">Créer Compte</button>
             </form>
           </div>
+          <div *ngIf="saveSuccess" class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong> Inscription réussie !
+          </div>
           <div class="card-footer p-2">
             <div class="row">
               <div class="col-6">

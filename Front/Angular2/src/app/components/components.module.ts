@@ -33,6 +33,7 @@ import { SearchComponent } from './search.component';
 import { OffreDureeComponent } from './offre-duree.component';
 import { OffreNiveauComponent } from './offre-niveau.component';
 import { ModalInfoComponent } from './modal-info.component';
+import { CandidatureComponent } from './candidature.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { ModalInfoComponent } from './modal-info.component';
     SearchComponent,
     OffreDureeComponent,
     OffreNiveauComponent,
-    ModalInfoComponent 
+    ModalInfoComponent,
+    CandidatureComponent 
   ]
 })
 export class ComponentsModule { }

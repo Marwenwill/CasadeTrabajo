@@ -1,22 +1,35 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import permissions
+from django.core.mail import send_mail
 
-from .serializers import CandidatureSerializer, CountCSerializer, CandidatSerializer, RecruteurSerializer, OffreSerializer, SecteurSerializer, NatureSerializer, RecruteurByIdSerializer, VilleSerializer, EmplacementSerializer, DureeSerializer, NiveauSerializer
+from .serializers import CandidatureJointureSerializer, CandidatureSerializer, CountCSerializer, CountOSerializer,  CountRSerializer, CandidatSerializer, RecruteurSerializer, OffreSerializer, SecteurSerializer, NatureSerializer, RecruteurByIdSerializer, VilleSerializer, EmplacementSerializer, DureeSerializer, NiveauSerializer
 from .models import Candidat, Recruteur, Offre, Candidature
+
+
+class sendEmailViewSet(ModelViewSet):
+	queryset = Candidature.objects.all()
+	serializer_class = CandidatureSerializer		
+		
 
 class CandidatViewSet(ModelViewSet):
 	queryset = Candidat.objects.all()
 	serializer_class = CandidatSerializer
-	permission_classes = (permissions.IsAuthenticated,) 
+	
 
 class CandidatureViewSet(ModelViewSet):
-	queryset = Candidature.objects.all()
+	queryset = Candidature.objects.all().order_by('-score')
 	serializer_class = CandidatureSerializer	
 
 class RecruteurViewSet(ModelViewSet):
 	queryset = Recruteur.objects.all()
 	serializer_class = RecruteurSerializer
-	permission_classes = (permissions.IsAuthenticated,) 
+
+class CandidatureByIdRecruteurViewSet(ModelViewSet):
+	queryset = Candidature.objects.all()
+	serializer_class = CandidatureJointureSerializer
+	permission_classes = (permissions.IsAuthenticated,)
+	def get_queryset(self, *args, **kwargs):
+		return self.queryset.filter(idRecruteur_id=self.kwargs['idRecruteur_id'], idOffre_id=self.kwargs['idOffre_id']) 
 
 class RecruteurByIdViewSet(ModelViewSet):
 	queryset = Recruteur.objects.filter(recruteur_id=1).values( 'entrepriseName',)
@@ -27,11 +40,7 @@ class RecruteurByIdViewSet(ModelViewSet):
 class OffreViewSet(ModelViewSet):
 	queryset = Offre.objects.all()
 	serializer_class = OffreSerializer
-	permission_classes = (permissions.IsAuthenticated,)
 
-
-	def perform_create(self, serializer):
-		serializer.save(owner=self.request.user)
 
 class OffreSecteurViewSet(ModelViewSet):
 	queryset = Offre.objects.all()
@@ -115,16 +124,16 @@ class NiveauViewSet(ModelViewSet):
 	permission_classes = (permissions.IsAuthenticated,)	
 
 class CountCViewSet(ModelViewSet):
-	queryset = Recruteur.objects.all()
+	queryset = Candidat.objects.all()
 	serializer_class = CountCSerializer 
 	permission_classes = (permissions.IsAuthenticated,) 	
 
 class CountRViewSet(ModelViewSet):
-	queryset = Recruteur.objects.count()
-	serializer_class = RecruteurSerializer 
+	queryset = Recruteur.objects.all()
+	serializer_class = CountRSerializer 
 	permission_classes = (permissions.IsAuthenticated,) 
 
 class CountOViewSet(ModelViewSet):
 	queryset = Offre.objects.all()
-	serializer_class = OffreSerializer 
+	serializer_class = CountOSerializer 
 	permission_classes = (permissions.IsAuthenticated,) 		

@@ -1,0 +1,86 @@
+ 
+
+Hosni ​Mribah  
+
+Élève​ ​ingénieur​ ​à​ ​l’Ecole​ ​Nationale​ ​des​ ​Sciences​ ​de​ ​l’Informatique, 
+option ​Réseaux ​et ​Systèmes ​Répartis. 
++(216)​ 55​ ​085​ ​992​ ​|​ ​hosni.mribah@ensi-uma.tn 
+
+ 
+ 
+
+EXPERIENCE 
+
+Integration ​Objects, Tunis ​— Application ​Mobile ​pour 
+KNet ​RCA 
+Août ​2017 ​- ​Juillet ​2017 
+Conception ​et ​developpement ​d’une ​application ​cross-platform 
+mobile ​pour ​le ​module ​KNet ​d’analise ​des ​causes ​racines ​en ​utilisant 
+le ​framework ​Xamarin. 
+
+Keywords ​: ​Xamarin, ​C#, ​Analyse ​de ​Causes ​racines, ​temps-réel.  
+
+Compétences 
+DEV 
+C, ​C++, ​C#, ​Python, ​Java, ​Shell 
+scripting, ​HTML, ​CSS, ​JavaScript, 
+PHP, ​PL/SQL, ​Angular2, ​Django, 
+Xamarin, ​Docker, ​Hadoop 
+
+SÉCURITÉ ​INFORMATIQUE 
+openssl, ​pwnlib, ​nmap, ​radare2, ​IDA, 
+Hydra, ​sqlmap, ​volatility 
+
+EDUCATION 
+
+DISTINCTIONS 
+
+École ​Nationale des ​Sciences ​de ​l’Informatique, Tunis  
+2015 ​- ​Aujourd’hui 
+Diplôme ​d'ingénieur ​en ​informatique. 
+
+Ecole ​Préparatoire ​aux ​Etudes ​d’Ingenieurs, El ​Manar  
+2013 ​- ​2015 
+Concours ​national ​d’entrée ​aux ​écoles ​d'ingénieurs.. 
+
+>Gagnant ​de ​Haxyd3 ​CTF ​2017 
+>Gagnant ​de ​BmyBit ​Hackathon ​2017 
+> ​Membre ​de ​l’équipe ​CTF ​pow270 
+> ​Organisateur ​de ​la ​compétition ​CTF 
+de ​la ​HackZone ​V 
+> ​Participation ​aux ​Championnats ​du 
+monde ​de ​Handball ​(U19 ​& ​U21) 
+
+Lycée ​Secondaire ​de ​Hammam ​Sousse, Sousse 
+2013 
+Baccalauréat, ​spécialité ​mathématiques. 
+
+PROJECTS 
+
+Hackzone ​V ​CTF ​Platform — CSI ​ENSI 
+Développée ​à ​l’aide ​du ​framework ​Django.. 
+
+Administration ​de ​conteneurs ​Docker​— ENSI 
+Développée ​à ​l’aide ​de: ​Docker, ​Docker ​Python ​API, ​Django ​Rest 
+Framework, ​Angular2. 
+
+Jeux ​d’échecs ​multi-joueurs — ENSI 
+Développée ​à ​l’aide ​de: ​C++, ​SFML(Simple ​and ​Fast ​Multimedia 
+Library) ​for ​C++.  
+
+EXTRACURRICULAR 
+
+> ​Membre ​senior ​(shadow) ​à ​la ​CSI 
+ENSI 
+> ​Joueur ​de ​l’équipe ​de ​Handball ​d’El 
+Menzah ​Sport 
+> ​Ex-joueur ​de ​l'équipe ​nationale ​de 
+Handball ​(U19 ​& ​U21) 
+> ​Ex-joueur ​de ​Handball ​à ​l’Etoile 
+Sportive ​du ​Sahel  
+
+LANGUAGES 
+
+Arabe,Français, ​Anglais 
+
+
